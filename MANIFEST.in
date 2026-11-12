@@ -1,3 +1,4 @@
+include CONTRIBUTING.md
 include Makefile package.json package-lock.json .nvmrc uv.lock .tool-versions
 include .github/release-please-config.json .github/.release-please-manifest.json
 recursive-include docs *.md

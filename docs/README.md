@@ -6,6 +6,8 @@ This is an independent Reponomics project, not affiliated with, sponsored by, en
 
 | Document | Purpose |
 | --- | --- |
+| [Roadmap](roadmap.md) | Planned work and proposals under consideration |
+| [Contributing](../CONTRIBUTING.md) | Development setup, validation commands and MCP client tooling |
 | [Server specification](specification.md) | Supported behavior, nine tools and host/server responsibilities |
 | [Design decisions](design.md) | Human-review boundary, deliberate exclusion of direct saves and documented-procedure authority |
 | [Architecture](architecture.md) | Modules, data flow, protocol adaptation and persistence boundaries |
@@ -18,7 +20,7 @@ This is an independent Reponomics project, not affiliated with, sponsored by, en
 | [CI and repository setup](ci.md) | Native compatibility matrix, security checks and service activation |
 | [Release procedure](releasing.md) | Release Please, approvals, OIDC publication and published-package QA |
 
-The [project README](../README.md) covers installation, host configuration and development commands. The [reference terminal host](../examples/host.py) demonstrates both explicit documents and optional server-managed storage using MCP calls.
+The [project README](../README.md) covers installation, host configuration and everyday use. The [contributor guide](../CONTRIBUTING.md) covers development commands. The [reference terminal host](../examples/host.py) demonstrates both explicit documents and optional server-managed storage using MCP calls.
 
 ## Historical records
 
