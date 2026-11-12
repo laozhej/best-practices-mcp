@@ -11,9 +11,10 @@ This is an independent Reponomics project, not affiliated with, sponsored by, en
 | [Architecture](architecture.md) | Modules, data flow, protocol adaptation and persistence boundaries |
 | [Implementation contracts](contracts.md) | Exact payloads, errors, size/network policies and edge cases |
 | [Upstream compatibility](upstream-compatibility.md) | Source baseline, routes, catalog conventions and update procedure |
-| [Transfer rules](transfer-rules.md) | URL precedence, overrides, omissions and script differences |
+| [Transfer rules](transfer-rules.md) | Faithful artifact contents, explicit overrides, exclusions and script behavior |
 | [Schema compatibility](schema-compatibility.md) | SDK-supported schema declarations and interoperability checks |
-| [Testing policy](testing-policy.md) | Required conformance checks and optional Ruby diagnostics |
+| [Testing policy](testing-policy.md) | Deterministic contract tests, defensive DOM tests and live compatibility evidence |
+| [Live browser QA](live-browser-qa.md) | Local PolicyChecks URL/script checks after first publication and for subsequent release candidates |
 | [CI and repository setup](ci.md) | Native compatibility matrix, security checks and service activation |
 | [Release procedure](releasing.md) | Release Please, approvals, OIDC publication and published-package QA |
 
@@ -21,6 +22,6 @@ The [project README](../README.md) covers installation, host configuration and d
 
 ## Historical records
 
-[Initial implementation planning](planning/initial-implementation/README.md) preserves the original scope, review findings and dispositions, and concise milestone outcomes. These records explain development decisions; their old milestone statuses and paths do not override the maintained documentation. Detailed generated QA reports are archived privately, and new reports are generated under ignored `build/qa/`.
+[Initial implementation planning](planning/initial-implementation/README.md) preserves the original scope, reviews and development decisions. These historical records do not override the maintained documentation.
 
 The [live Chrome QA record](live-qa/2026-11-09/README.md) includes the approved screenshots, associated retained proposal URLs/script, and the limits of the exercised transfer cases.

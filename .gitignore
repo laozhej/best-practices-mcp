@@ -139,7 +139,4 @@ sync-from-*
 
 # Local documentation preview artifacts
 .playwright-mcp/
-
-# Required pinned upstream oracle source (override generic Python lib ignore)
-!vendor/badgeapp-m3/lib/
-!vendor/badgeapp-m3/lib/criterion_status.rb
+antipasta*

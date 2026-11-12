@@ -51,6 +51,12 @@ Before public release, configure the `main` ruleset to require the six compatibi
 
 The pre-release repository starts private and becomes public immediately before the first release. At that checkpoint, verify the environment approval gate, activate applicable code scanning, run the required checks in the new repository, and inspect any pending/skipped integrations honestly. A workflow file or a skipped job does not establish that CodeQL, Codecov, OSV or publication has succeeded. Public-service activation and the first real results are distinct from local YAML/actionlint and configuration validation.
 
+## First push to exercise CI
+
+Create the private `reponomics/best-practices-mcp` repository without a generated README or license, connect its remote, and push the reviewed `main` history. Use conventional-title pull requests for subsequent changes and inspect checks against the exact commits being reviewed.
+
+Keep `PYPI_PUBLISH_ENABLED` unset and leave the release App variable unset while bringing up ordinary CI. The compatibility matrix and OSV scan can run before publication setup. A private-repository CodeQL skip is expected until the required entitlement or public visibility is in place; Codecov remains skipped until explicitly connected. Review actual run results before selecting required checks, then use the signed squash path for approved pull requests. Configure release services separately using the release procedure. No live browser session is needed for this first push; the first published beta must pass the browser runbook before stable promotion.
+
 ## Local validation
 
 `make check` remains the required offline regression/lint interface. `make test-coverage` measures server coverage locally. Run `actionlint` over `.github/workflows/*.yml` when changing workflows. The OSV scan contacts the advisory service and CodeQL/Codecov/Scorecard are qualified through their configured GitHub jobs; local configuration checks do not substitute for those executions.

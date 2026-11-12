@@ -13,12 +13,12 @@ ORIGIN = "https://www.bestpractices.dev"
 
 
 def prepare_update_url(project_id, level, draft, record, observation, override_fields=None):
-    """Encode raw draft text; prediction alone models upstream normalization."""
+    """Encode every eligible supplied value and explicit override without normalization."""
     draft, criteria, scope, result = transfer_context(project_id, level, draft, record, observation)
     requested, effective = override_scope(
         [] if override_fields is None else override_fields, draft, scope
     )
-    rows = transfer_rows(draft, record, criteria, scope, effective, "url")
+    rows = transfer_rows(draft, criteria, scope, effective)
     effective.intersection_update(
         item["field"] for item in rows if item["disposition"] == "encoded"
     )

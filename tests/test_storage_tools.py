@@ -1,4 +1,4 @@
-"""G4 public paths: actual MCP storage, explicit precedence and snapshot provenance."""
+"""Public paths: actual MCP storage, explicit precedence and snapshot provenance."""
 
 import asyncio
 import json

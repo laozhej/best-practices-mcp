@@ -1,15 +1,4 @@
-"""Required URL contract examples derived from documentation, not executed Ruby.
-
-Sources retained in vendor/badgeapp-m3/docs/:
-* automation-approach.md, "The Decision Matrix": blank/equal/different values,
-  default retention, forcing, and the status/justification coupling rule.
-* automation-proposals.md, "URL Format", "Justification Values", and "overrides":
-  edit-form proposals, raw URL encoding, and explicit override scope.
-
-Additional accepted limits (unknown resets, exact-only overrides, ASCII strip /
-Unicode blank compatibility) are covered by tests/test_proposals.py and specified
-in docs/transfer-rules.md. Neither suite predicts a Save/Submit result.
-"""
+"""Proposal routes, field reporting and exact payloads across observed records."""
 
 from urllib.parse import parse_qs, urlsplit
 
@@ -29,69 +18,55 @@ OBSERVATION = {
 
 
 @pytest.mark.parametrize("field", [JUST, "description"], ids=["justification", "metadata"])
-@pytest.mark.parametrize(
-    "saved,proposed,forced,expected",
-    [
-        pytest.param("", "new text", False, "fill", id="blank-default"),
-        pytest.param("", "new text", True, "fill", id="blank-forced"),
-        pytest.param("old text", "new text", False, "retain_existing", id="retain-default"),
-        pytest.param("old text", "new text", True, "replace", id="replace-forced"),
-        pytest.param("same text", "same text", False, "unchanged", id="equal-default"),
-        pytest.param("same text", "same text", True, "unchanged", id="equal-forced"),
-        pytest.param("old text", "", False, "retain_existing", id="empty-default"),
-        pytest.param("old text", "", True, "replace", id="empty-forced"),
-    ],
-)
-def test_documented_nonstatus_matrix(field, saved, proposed, forced, expected):
-    result = prepare_update_url(
-        123, "passing", {field: proposed}, {field: saved}, OBSERVATION, [field] if forced else []
-    )
-    assert result["transfer"][0]["expected_application"] == expected
-    if expected == "unchanged":
-        assert result["artifact"] is None
-    else:
-        query = parse_qs(urlsplit(result["artifact"]["url"]).query, keep_blank_values=True)
-        assert query == {field: [proposed], **({"overrides": [field]} if forced else {})}
-        # A standalone justification requires no invented status parameter.
-        assert STATUS not in query
+@pytest.mark.parametrize("value", ["new text", "", " \tnew text\r\n", "\x00new text\x00"])
+@pytest.mark.parametrize("forced", [False, True])
+def test_standalone_values_are_identical_across_observed_records(field, value, forced):
+    draft = {field: value}
+    overrides = [field] if forced else []
+    records = [{}, {field: None}, {field: ""}, {field: value}, {field: "other"}, {field: [1]}]
+    results = [
+        prepare_update_url(123, "passing", draft, record, OBSERVATION, overrides)
+        for record in records
+    ]
+    assert all(result == results[0] for result in results)
+    result = results[0]
+    query = parse_qs(urlsplit(result["artifact"]["url"]).query, keep_blank_values=True)
+    assert query == {field: [value], **({"overrides": [field]} if forced else {})}
+    assert result["outcome"] == "complete"
+    assert [row["field"] for row in result["transfer"]] == [field]
+    assert result["transfer"][0]["disposition"] == "encoded"
+    assert result["requested_overrides"] == result["effective_overrides"] == overrides
 
 
-@pytest.mark.parametrize(
-    "saved_status,status_overrides,expected_status,expected_justification,effective",
-    [
-        pytest.param("Met", [], "unchanged", "replace", [JUST], id="equal-status-does-not-block"),
-        pytest.param(
-            "Unmet",
-            [],
-            "retain_existing",
-            "blocked_by_status",
-            [JUST],
-            id="different-status-blocks",
-        ),
-        pytest.param(
-            "Unmet", [STATUS], "replace", "replace", [JUST, STATUS], id="forced-status-allows"
-        ),
-    ],
-)
-def test_documented_status_coupling(
-    saved_status, status_overrides, expected_status, expected_justification, effective
-):
-    result = prepare_update_url(
-        123,
-        "passing",
-        {STATUS: "Met", JUST: "new wording"},
-        {STATUS: saved_status, JUST: "old wording"},
-        OBSERVATION,
-        [JUST, *status_overrides],
-    )
-    rows = {row["field"]: row for row in result["transfer"]}
-    assert rows[STATUS]["expected_application"] == expected_status
-    assert rows[JUST]["expected_application"] == expected_justification
-    assert result["effective_overrides"] == effective
+@pytest.mark.parametrize("overrides", [[], [STATUS], [JUST], [STATUS, JUST]])
+def test_status_and_justification_payloads_preserve_exact_explicit_override_scope(overrides):
+    draft = {STATUS: "Met", JUST: "new wording"}
+    records = [
+        {},
+        {STATUS: None, JUST: None},
+        draft,
+        {STATUS: "Met", JUST: "old wording"},
+        {STATUS: "Unmet", JUST: "new wording"},
+        {STATUS: "Unmet", JUST: ""},
+        {STATUS: True, JUST: {"unexpected": "value"}},
+    ]
+    results = [
+        prepare_update_url(123, "passing", draft, record, OBSERVATION, overrides)
+        for record in records
+    ]
+    assert all(result == results[0] for result in results)
+    result = results[0]
     query = parse_qs(urlsplit(result["artifact"]["url"]).query)
-    assert query[JUST] == ["new wording"]
-    # Keep a differing status in the proposal so pruning cannot bypass coupling.
-    assert (STATUS in query) == (saved_status != "Met")
+    assert query == {
+        STATUS: ["Met"],
+        JUST: ["new wording"],
+        **({"overrides": [",".join(sorted(overrides))]} if overrides else {}),
+    }
+    rows = {row["field"]: row for row in result["transfer"]}
+    assert set(rows) == set(draft)
+    assert all(row["disposition"] == "encoded" for row in rows.values())
+    assert {field for field, row in rows.items() if row["override"]} == set(overrides)
+    assert result["requested_overrides"] == result["effective_overrides"] == sorted(overrides)
 
 
 @pytest.mark.parametrize(
@@ -99,7 +74,9 @@ def test_documented_status_coupling(
 )
 def test_documented_edit_route_and_raw_url_values(level):
     text = "  café & source=https://example.org/a?b=1#fragment\n"
-    result = prepare_update_url(123, level, {"description": text}, {"description": ""}, OBSERVATION)
+    result = prepare_update_url(
+        123, level, {"description": text}, {"description": text}, OBSERVATION
+    )
     artifact = result["artifact"]
     url = urlsplit(artifact["url"])
     assert (url.scheme, url.netloc, url.path) == (

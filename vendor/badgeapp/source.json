@@ -1,13 +1,11 @@
 {
   "files": {
     "LICENSE": "d579030dcd292b0925056544b00fe6e6895dcd68c1b8ae1d38014e376ef631d9",
-    "app/helpers/projects_helper.rb": "c224efdde0cac391c7056d6754f37b994d1408f402e26bfbfe6632d3c17f6baf",
-    "app/models/concerns/level_conversion.rb": "6ae4b4946a8c9a85f64d8bfe36ac1a683b5309a3623eb1a57e5862a62940645c",
-    "app/models/criteria.rb": "242cd8fa8f400573a25ad53f770cc9525be88112caedd166152082570d642a85",
-    "config/initializers/00_criteria_hash.rb": "e991408023892c4de8806f4aaece4ea64bd9ec6ffaf7a379d822fdb95a4b8112",
     "config/locales/en.yml": "2dec2815dafb6444e2213ea224dab22633164f618c6297c3d511bcd6c4a8b5e8",
     "criteria/baseline_criteria.yml": "e6225fc05b8e58f6aaa5cd6d0f39bd050c6ba9bef8c8a8b40adaf42e2ff37b91",
-    "criteria/criteria.yml": "ca39078ee02032152210f0816add8b096a78d5c6d2f31f90e1de948ec190b1b9"
+    "criteria/criteria.yml": "ca39078ee02032152210f0816add8b096a78d5c6d2f31f90e1de948ec190b1b9",
+    "docs/automation-approach.md": "608c87b9db6becacbef3af3d0d60be7bb0347e01e7f60a98353a65588e955182",
+    "docs/automation-proposals.md": "2f73be53349300e26b4aed38c303e8167e92389c3f4fd2f2edb4adc34f66d89f"
   },
   "generated_at": "2026-11-09T22:34:03Z",
   "repository": "https://github.com/ossf/best-practices-badge",

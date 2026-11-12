@@ -92,7 +92,7 @@ def _script_field(field, value, definitions):
 def prepare_update_script(project_id, level, draft, record, observation):
     """Return a deterministic script, never execute it or interact with a browser."""
     draft, criteria, scope, result = transfer_context(project_id, level, draft, record, observation)
-    rows = transfer_rows(draft, record, criteria, scope, set(), "script")
+    rows = transfer_rows(draft, criteria, scope, set())
     result["artifact"] = None
     if not finish_result(result, rows):
         return result

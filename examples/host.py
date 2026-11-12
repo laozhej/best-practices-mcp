@@ -476,13 +476,11 @@ class ReadHost:
             self.show_artifact(kind, result)
 
     def show_artifact(self, kind: str, result: dict) -> None:
-        self.write(
-            "Proposal only: inspect predicted effects and warnings; nothing has been applied."
-        )
+        self.write("Proposal only: inspect included and excluded fields; nothing has been applied.")
         self.show_json(result)
         self.write(
-            "expected_application describes edit-form effects only; "
-            "it does not predict save-time validation or persistence."
+            "The report describes artifact contents. "
+            "Review actual field values in BadgeApp before saving."
         )
         artifact = result.get("artifact")
         if artifact is None:
@@ -525,9 +523,7 @@ class ReadHost:
         self.write(f"Exported {kind} to {selected}.")
 
     async def run(self) -> None:
-        self.write(
-            "M4 reference host. Validation is optional; artifacts never apply or save changes."
-        )
+        self.write("Reference host. Validation is optional; artifacts never apply or save changes.")
         commands = {
             "find": self.find,
             "level": self.choose_level,

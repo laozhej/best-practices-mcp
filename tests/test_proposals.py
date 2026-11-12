@@ -1,4 +1,4 @@
-"""Pure URL eligibility, override coupling, encoding and prediction contracts."""
+"""URL eligibility, explicit overrides and exact artifact encoding."""
 
 from copy import deepcopy
 from urllib.parse import parse_qs, urlsplit
@@ -40,7 +40,8 @@ def params(result):
     [
         ({STATUS: "Met"}, {}, "complete"),
         ({STATUS: "Met", "extra": 1}, {}, "partial"),
-        ({STATUS: "Met"}, {STATUS: "Met"}, "no_changes"),
+        ({STATUS: "Met", "extra": 1}, {STATUS: "Met"}, "partial"),
+        ({STATUS: "Met"}, {STATUS: "Met"}, "complete"),
         ({STATUS: "?"}, {STATUS: "?"}, "no_transferable_changes"),
         ({}, {}, "no_supplied_transferable_answers"),
         ({"id": 123}, {}, "no_supplied_transferable_answers"),
@@ -54,44 +55,50 @@ def test_outcomes(draft, record, outcome):
     assert result["no_artifact_reason"] == (None if result["artifact"] else outcome)
 
 
-@pytest.mark.parametrize(
-    ("saved", "forced", "expected"),
-    [
-        ("?", False, "fill"),
-        ("", False, "fill"),
-        (None, False, "fill"),
-        ("Unmet", False, "retain_existing"),
-        ("Unmet", True, "replace"),
-        ("Met", True, "unchanged"),
-        ("nonsense", True, "unknown"),
-        (3, False, "unknown"),
-    ],
-)
-def test_status_predictions(saved, forced, expected):
+@pytest.mark.parametrize("saved", ["?", "", None, "Unmet", "Met", "nonsense", 3])
+@pytest.mark.parametrize("forced", [False, True])
+def test_status_value_and_explicit_override_do_not_depend_on_observed_answer(saved, forced):
     result = prepare({STATUS: "Met"}, {STATUS: saved}, [STATUS] if forced else [])
-    assert reports(result)[STATUS]["expected_application"] == expected
+    assert params(result) == {
+        STATUS: ["Met"],
+        **({"overrides": [STATUS]} if forced else {}),
+    }
+    assert reports(result)[STATUS]["disposition"] == "encoded"
+    assert reports(result)[STATUS]["override"] is forced
+    assert set(reports(result)[STATUS]) == {"field", "disposition", "reason", "override"}
 
 
-def test_missing_status_and_text_are_unknown_in_pure_generator():
-    result = prepare({STATUS: "Met", JUST: "explanation", "name": "new"})
-    assert {row["expected_application"] for row in result["transfer"]} == {"unknown"}
+def test_missing_observed_answers_do_not_prevent_supplied_fields():
+    draft = {STATUS: "Met", JUST: "explanation", "name": "new"}
+    result = prepare(draft)
+    assert params(result) == {field: [value] for field, value in draft.items()}
+    assert {row["disposition"] for row in result["transfer"]} == {"encoded"}
 
 
-def test_status_override_propagates_before_status_pruning():
+def test_status_override_is_encoded_once_without_adding_justification_override():
     result = prepare({STATUS: "Met", JUST: "new"}, {STATUS: "Met", JUST: "old"}, [STATUS, STATUS])
     assert result["requested_overrides"] == [STATUS]
+    assert result["effective_overrides"] == [STATUS]
+    assert params(result) == {STATUS: ["Met"], JUST: ["new"], "overrides": [STATUS]}
+    assert reports(result)[STATUS]["override"]
+    assert not reports(result)[JUST]["override"]
+
+
+def test_justification_override_does_not_suppress_or_force_supplied_status():
+    result = prepare({STATUS: "Met", JUST: "new"}, {STATUS: "Unmet", JUST: "old"}, [JUST])
+    assert params(result) == {STATUS: ["Met"], JUST: ["new"], "overrides": [JUST]}
+    assert result["requested_overrides"] == result["effective_overrides"] == [JUST]
+    assert not reports(result)[STATUS]["override"]
+    assert reports(result)[JUST]["override"]
+
+
+def test_effective_overrides_only_contain_fields_in_the_artifact():
+    result = prepare({STATUS: "?", JUST: "new"}, overrides=[STATUS, JUST])
+    assert result["requested_overrides"] == sorted([STATUS, JUST])
     assert result["effective_overrides"] == [JUST]
     assert params(result) == {JUST: ["new"], "overrides": [JUST]}
-    assert reports(result)[JUST]["expected_application"] == "replace"
     assert not reports(result)[STATUS]["override"]
-
-
-def test_justification_override_cannot_bypass_blocked_status():
-    result = prepare({STATUS: "Met", JUST: "new"}, {STATUS: "Unmet", JUST: "old"}, [JUST])
-    assert reports(result)[STATUS]["expected_application"] == "retain_existing"
-    assert reports(result)[JUST]["expected_application"] == "blocked_by_status"
-    assert params(result)[STATUS] == ["Met"]
-    assert params(result)[JUST] == ["new"]
+    assert reports(result)[JUST]["override"]
 
 
 @pytest.mark.parametrize(
@@ -122,7 +129,7 @@ def test_invalid_status_omits_companion_without_validation_gate(status):
 def test_unknown_status_does_not_block_valid_justification():
     result = prepare({STATUS: "?", JUST: "standalone"}, {JUST: ""})
     assert result["outcome"] == "partial"
-    assert reports(result)[JUST]["expected_application"] == "fill"
+    assert reports(result)[JUST]["disposition"] == "encoded"
     assert params(result) == {JUST: ["standalone"]}
 
 
@@ -133,21 +140,21 @@ def test_bad_justification_does_not_block_status_or_apply_evidence_validation():
 
 
 @pytest.mark.parametrize(
-    ("value", "saved", "expected"),
+    ("value", "saved"),
     [
-        (" \tnew\r\n", "old", "retain_existing"),
-        (" \tnew\r\n", "new", "unchanged"),
-        ("\x00new\x00", "new", "unchanged"),
-        ("\u00a0new\u00a0", "new", "retain_existing"),
-        ("new", "\u00a0", "fill"),
-        ("", "", "unchanged"),
+        (" \tnew\r\n", "old"),
+        (" \tnew\r\n", "new"),
+        ("\x00new\x00", "new"),
+        ("\u00a0new\u00a0", "new"),
+        ("new", "\u00a0"),
+        ("", ""),
     ],
 )
-def test_ruby_strip_and_rails_blank_predictions(value, saved, expected):
+def test_url_preserves_whitespace_control_characters_and_empty_values(value, saved):
     result = prepare({JUST: value}, {JUST: saved})
-    assert reports(result)[JUST]["expected_application"] == expected
-    if result["artifact"]:
-        assert params(result)[JUST] == [value]
+    assert result["outcome"] == "complete"
+    assert reports(result)[JUST]["disposition"] == "encoded"
+    assert params(result)[JUST] == [value]
 
 
 def test_raw_unicode_reserved_and_empty_values_are_encoded_exactly_once():
@@ -185,6 +192,30 @@ def test_inputs_are_not_mutated_and_provenance_is_never_encoded():
     assert params(result) == {STATUS: ["Met"]}
     assert result["identity"]["repo_check"] == "matched"
     assert [row["field"] for row in result["transfer"]] == sorted(draft)
+
+
+def test_report_accounts_for_included_and_excluded_supplied_fields():
+    draft = {
+        "id": 123,
+        "name": "same name",
+        STATUS: "?",
+        JUST: 12,
+        "access_continuity_status": "Met",
+        "extra": "opaque",
+    }
+    result = prepare(draft, {"name": "same name"}, ["name", STATUS])
+    assert result["outcome"] == "partial"
+    assert params(result) == {"name": ["same name"], "overrides": ["name"]}
+    assert {field: row["disposition"] for field, row in reports(result).items()} == {
+        "id": "omitted",
+        "name": "encoded",
+        STATUS: "unsupported",
+        JUST: "invalid",
+        "access_continuity_status": "outside_level",
+        "extra": "unsupported",
+    }
+    assert result["requested_overrides"] == sorted(["name", STATUS])
+    assert result["effective_overrides"] == ["name"]
 
 
 def test_identity_mismatch_stops_artifact():

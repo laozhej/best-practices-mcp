@@ -260,7 +260,12 @@
     "input": {
       "project_id": 123,
       "level": "passing",
-      "draft": {}
+      "draft": {
+        "name": "Existing value"
+      },
+      "override_fields": [
+        "name"
+      ]
     },
     "success": {
       "schema_version": 1,
@@ -286,14 +291,28 @@
       "identity": {
         "association": "explicit_target",
         "id_check": "absent",
-        "repo_check": "not_checked"
+        "repo_check": "absent"
       },
-      "outcome": "no_supplied_transferable_answers",
-      "artifact": null,
-      "no_artifact_reason": "no_supplied_transferable_answers",
-      "transfer": [],
-      "requested_overrides": [],
-      "effective_overrides": []
+      "outcome": "complete",
+      "artifact": {
+        "url": "https://www.bestpractices.dev/en/projects/123/passing/edit?name=Existing%20value&overrides=name",
+        "encoded_size_bytes": 95
+      },
+      "no_artifact_reason": null,
+      "transfer": [
+        {
+          "field": "name",
+          "disposition": "encoded",
+          "reason": "eligible_field",
+          "override": true
+        }
+      ],
+      "requested_overrides": [
+        "name"
+      ],
+      "effective_overrides": [
+        "name"
+      ]
     },
     "error": {
       "schema_version": 1,

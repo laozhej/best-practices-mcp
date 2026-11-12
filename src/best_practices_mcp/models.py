@@ -346,26 +346,14 @@ class ValidateDraftResult(Result):
 
 class TransferField(Model):
     field: str
-    disposition: Literal[
-        "encoded", "unchanged", "outside_level", "unsupported", "invalid", "omitted"
-    ]
+    disposition: Literal["encoded", "outside_level", "unsupported", "invalid", "omitted"]
     reason: str
-    expected_application: Literal[
-        "fill",
-        "replace",
-        "retain_existing",
-        "blocked_by_status",
-        "unchanged",
-        "not_applicable",
-        "unknown",
-    ]
     override: bool
 
 
 Outcome = Literal[
     "complete",
     "partial",
-    "no_changes",
     "no_transferable_changes",
     "no_supplied_transferable_answers",
 ]

@@ -1,9 +1,10 @@
-"""Exercise M3 production handlers over MCP without storage or authenticated access."""
+"""Exercise document handlers over MCP without storage or authenticated access."""
 
 import asyncio
 import json
 import sys
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 from jsonschema import Draft202012Validator
 from mcp import Client, StdioServerParameters
@@ -45,7 +46,7 @@ def test_document_workflow_wire_results_with_missing_storage_root(tmp_path):
                     {
                         "project_id": 123,
                         "level": "passing",
-                        "draft": {"description_good_status": "Unmet"},
+                        "draft": {"description_good_status": "Met"},
                     },
                 ),
                 (
@@ -67,7 +68,10 @@ def test_document_workflow_wire_results_with_missing_storage_root(tmp_path):
                 results.append(payload)
             assert results[0]["draft"]["opaque"] == [None, True, {"x": 3}]
             assert results[1]["findings"]
-            assert results[2]["transfer"][0]["expected_application"] == "retain_existing"
+            assert results[2]["transfer"][0]["disposition"] == "encoded"
+            assert parse_qs(urlsplit(results[2]["artifact"]["url"]).query) == {
+                "description_good_status": ["Met"]
+            }
             assert results[3]["artifact"]["javascript"]
             for name in ("validate_draft", "prepare_update_url", "prepare_update_script"):
                 result = await client.call_tool(name, {"project_id": 123, "level": "passing"})

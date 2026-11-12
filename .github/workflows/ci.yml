@@ -65,10 +65,10 @@ jobs:
         run: '"$VENV_PYTHON" scripts/check_coverage.py'
       - name: Fresh wheel and sdist installation outside checkout
         if: ${{ !cancelled() }}
-        run: '"$VENV_PYTHON" scripts/check_fresh_package.py --allow-downloads --output build/qa/M5/fresh-package.json'
+        run: '"$VENV_PYTHON" scripts/check_fresh_package.py --allow-downloads --output build/verification/fresh-package.json'
       - name: Record exact execution environment
         if: ${{ always() }}
-        run: python scripts/ci_environment.py --output build/qa/M5/environment.json
+        run: python scripts/ci_environment.py --output build/verification/environment.json
       - name: Retain test, coverage and package evidence
         if: ${{ always() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -76,9 +76,9 @@ jobs:
           name: evidence-${{ matrix.os }}-python-${{ matrix.python }}
           path: |
             build/coverage/
-            build/qa/M5/fresh-package.json
-            build/qa/M5/fresh-package.log
-            build/qa/M5/environment.json
+            build/verification/fresh-package.json
+            build/verification/fresh-package.log
+            build/verification/environment.json
           if-no-files-found: warn
           retention-days: 30
 

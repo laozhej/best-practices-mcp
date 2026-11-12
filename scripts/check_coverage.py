@@ -15,30 +15,60 @@ import subprocess
 import sys
 import sysconfig
 import tempfile
+import time
 from contextlib import contextmanager
 from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
 
-from qa import ROOT, sanitize, source_fingerprint
+from verification_support import ROOT, sanitize, source_fingerprint
+
+
+def wait_with_progress(process: subprocess.Popen, stage: str) -> bool:
+    """Keep buffered, sanitized output while making long stages visibly active."""
+    started = time.monotonic()
+    deadline = started + 600
+    while True:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            process.kill()
+            process.wait()
+            return True
+        try:
+            process.wait(timeout=min(15, remaining))
+            return False
+        except subprocess.TimeoutExpired:
+            elapsed = int(time.monotonic() - started)
+            print(f"Coverage {stage}: still running ({elapsed}s elapsed)", flush=True)
 
 
 def command(args: list[str], env: dict[str, str], log: Path) -> int:
-    completed = subprocess.run(
-        [sys.executable, "-m", "coverage", *args],
-        cwd=ROOT,
-        env=env,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        encoding="utf-8",
-        timeout=600,
-    )
-    output = sanitize(completed.stdout, ROOT)
+    print(f"Coverage {args[0]}: starting (stage output follows on completion)", flush=True)
+    # A temporary file avoids pipe-draining waits on inherited descendant handles.
+    with tempfile.TemporaryFile(mode="w+", encoding="utf-8") as captured:
+        with subprocess.Popen(
+            [sys.executable, "-m", "coverage", *args],
+            cwd=ROOT,
+            env=env,
+            stdout=captured,
+            stderr=subprocess.STDOUT,
+        ) as process:
+            try:
+                timed_out = wait_with_progress(process, args[0])
+            except BaseException:
+                process.kill()
+                process.wait()
+                raise
+        captured.seek(0)
+        output = captured.read()
+    output = sanitize(output, ROOT)
     with log.open("a", encoding="utf-8") as stream:
         stream.write(output)
     print(output, end="", flush=True)
-    return completed.returncode
+    status = 124 if timed_out else process.returncode
+    result = "timed out after 600s" if timed_out else f"finished (exit {status})"
+    print(f"Coverage {args[0]}: {result}", flush=True)
+    return status
 
 
 @contextmanager

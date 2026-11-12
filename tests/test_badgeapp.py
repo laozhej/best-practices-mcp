@@ -376,12 +376,12 @@ def test_repeated_reads_make_fresh_requests_and_do_not_mutate_source():
     assert record == fixture()
 
 
-def test_complete_snapshot_normalizes_only_omitted_justifications():
+def test_project_snapshot_preserves_missing_answers():
     record = {"id": 123, "description_good_status": "Met", "OSPS-AC-01.01_status": "Unmet"}
     http = FakeHTTP(record)
     snapshot, observation = asyncio.run(BadgeAppClient(http).get_project_snapshot(123))
-    assert snapshot["description_good_justification"] == ""
-    assert snapshot["osps_ac_01_01_status"] == "Unmet"
+    assert "description_good_justification" not in snapshot
+    assert snapshot["OSPS-AC-01.01_status"] == "Unmet"
     assert "build_status" not in snapshot
     assert observation["fetched_at"] == STAMP
     assert http.calls == [("/projects/123.json", None)]
@@ -389,7 +389,13 @@ def test_complete_snapshot_normalizes_only_omitted_justifications():
     assert "description_good_justification" not in result["answers"]
 
 
-def test_complete_snapshot_preserves_present_malformed_values_for_uncertain_prediction():
+def test_project_snapshot_preserves_present_answer_values():
     http = FakeHTTP({"id": 123, "description_good_justification": {"unfamiliar": True}})
     snapshot, _ = asyncio.run(BadgeAppClient(http).get_project_snapshot(123))
     assert snapshot["description_good_justification"] == {"unfamiliar": True}
+
+
+def test_project_snapshot_does_not_interpret_conflicting_answer_aliases():
+    record = {"id": 123, "OSPS-AC-01.01_status": "Met", "osps_ac_01_01_status": "Unmet"}
+    snapshot, _ = asyncio.run(BadgeAppClient(FakeHTTP(record)).get_project_snapshot(123))
+    assert snapshot == record

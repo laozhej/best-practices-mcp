@@ -44,7 +44,7 @@ def _flatten_criteria(groups):
 
 @pytest.fixture(scope="module")
 def yaml_criteria():
-    """Read the checked-in YAML independently of catalog generation and Ruby fixtures."""
+    """Read the checked-in YAML independently of catalog generation."""
     definitions = {}
     for name in ("criteria.yml", "baseline_criteria.yml"):
         source = yaml.safe_load(

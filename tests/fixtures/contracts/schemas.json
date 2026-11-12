@@ -2872,7 +2872,6 @@
               "enum": [
                 "complete",
                 "partial",
-                "no_changes",
                 "no_transferable_changes",
                 "no_supplied_transferable_answers"
               ],
@@ -2950,7 +2949,6 @@
             "disposition": {
               "enum": [
                 "encoded",
-                "unchanged",
                 "outside_level",
                 "unsupported",
                 "invalid",
@@ -2963,19 +2961,6 @@
               "title": "Reason",
               "type": "string"
             },
-            "expected_application": {
-              "enum": [
-                "fill",
-                "replace",
-                "retain_existing",
-                "blocked_by_status",
-                "unchanged",
-                "not_applicable",
-                "unknown"
-              ],
-              "title": "Expected Application",
-              "type": "string"
-            },
             "override": {
               "title": "Override",
               "type": "boolean"
@@ -2985,7 +2970,6 @@
             "field",
             "disposition",
             "reason",
-            "expected_application",
             "override"
           ],
           "title": "TransferField",
@@ -3375,7 +3359,6 @@
               "enum": [
                 "complete",
                 "partial",
-                "no_changes",
                 "no_transferable_changes",
                 "no_supplied_transferable_answers"
               ],
@@ -3467,7 +3450,6 @@
             "disposition": {
               "enum": [
                 "encoded",
-                "unchanged",
                 "outside_level",
                 "unsupported",
                 "invalid",
@@ -3480,19 +3462,6 @@
               "title": "Reason",
               "type": "string"
             },
-            "expected_application": {
-              "enum": [
-                "fill",
-                "replace",
-                "retain_existing",
-                "blocked_by_status",
-                "unchanged",
-                "not_applicable",
-                "unknown"
-              ],
-              "title": "Expected Application",
-              "type": "string"
-            },
             "override": {
               "title": "Override",
               "type": "boolean"
@@ -3502,7 +3471,6 @@
             "field",
             "disposition",
             "reason",
-            "expected_application",
             "override"
           ],
           "title": "TransferField",

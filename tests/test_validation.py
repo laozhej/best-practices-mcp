@@ -1,7 +1,7 @@
 """Required advisory-validation contract from docs/specification.md §4.
 
 The human-readable predicate cases exercise the agreed minimum length, exact
-comment prefix, and URL-pattern rules. Ruby-generated observations are optional.
+comment prefix, and URL-pattern rules independently of upstream implementation.
 """
 
 import json
@@ -15,7 +15,7 @@ from best_practices_mcp.errors import DomainError
 from best_practices_mcp.validation import contains_url, usable_justification, validate_draft
 
 FIXTURE = json.loads(
-    (Path(__file__).parent / "fixtures/documents/upstream-predicates.json").read_text(
+    (Path(__file__).parent / "fixtures/documents/advisory-predicates.json").read_text(
         encoding="utf-8"
     )
 )

@@ -1,8 +1,7 @@
 """Opt-in fresh wheel/sdist installation with downloads and isolated runtime probes.
 
-Run with --allow-downloads. Default milestone QA must keep using the offline
-check_package.py; this command explicitly resolves/install dependencies from pip's
-configured package index. Tests only use synthetic data and temporary draft roots.
+Run with --allow-downloads to resolve and install dependencies from pip's
+configured package index. Runtime probes use synthetic data and temporary draft roots.
 """
 
 import argparse
@@ -18,7 +17,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from check_package import check_archives
-from qa import git, source_fingerprint
+from verification_support import git, source_fingerprint
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -160,7 +159,9 @@ def main() -> int:
     parser.add_argument(
         "--allow-downloads", action="store_true", help="Allow pip dependency/build downloads"
     )
-    parser.add_argument("--output", type=Path, default=ROOT / "build/qa/M5/fresh-package.json")
+    parser.add_argument(
+        "--output", type=Path, default=ROOT / "build/verification/fresh-package.json"
+    )
     args = parser.parse_args()
     if not args.allow_downloads:
         parser.error(

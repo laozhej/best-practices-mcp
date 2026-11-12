@@ -1,4 +1,4 @@
-"""Offline M2 demo/test server: production handlers with an injected HTTP transport.
+"""Offline test server: production handlers with an injected HTTP transport.
 
 This file is never imported by the installed CLI and accepts no origin override.
 """
@@ -36,7 +36,7 @@ PROJECTS = {
 }
 
 
-class DemoClock:
+class FakeClock:
     def __init__(self):
         self.value = 0.0
 
@@ -74,7 +74,7 @@ def respond(request):
 
 
 def factory():
-    clock = DemoClock()
+    clock = FakeClock()
     return BadgeAppHTTP(transport=httpx2.MockTransport(respond), clock=clock.now, sleep=clock.sleep)
 
 

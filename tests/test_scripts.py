@@ -1,4 +1,4 @@
-"""Execute returned JavaScript against source-derived forms using a real DOM."""
+"""Execute returned JavaScript against synthetic controls in jsdom."""
 
 import json
 import os
@@ -30,7 +30,7 @@ def prepare(draft, record=None, level="passing"):
 
 def execute(result, *, url=None, mutations=None, html=None):
     node = os.environ.get("NODE") or shutil.which("node")
-    assert node, "Node 24 is required for the M3 DOM acceptance gate."
+    assert node, "Node 24 is required for the DOM tests."
     level = result["level"]
     payload = {
         "javascript": result["artifact"]["javascript"],
@@ -173,7 +173,7 @@ def test_text_is_data_and_no_trim_is_applied():
 def test_script_replaces_values_without_url_override_and_can_clear_justification():
     draft = {"build_status": "Met", "build_justification": ""}
     result = prepare(draft, {"build_status": "Unmet", "build_justification": "old"})
-    assert {item["expected_application"] for item in result["transfer"]} == {"replace"}
+    assert {item["disposition"] for item in result["transfer"]} == {"encoded"}
     assert "Execution replaces existing values" in result["artifact"]["instructions"]
     assert "independently of URL override settings" in result["artifact"]["instructions"]
     actual = execute(result)
@@ -186,17 +186,53 @@ def test_script_replaces_values_without_url_override_and_can_clear_justification
     )
 
 
+def test_equal_observed_answers_are_still_assigned_to_controls():
+    draft = {"name": "requested name", "build_status": "Met", "build_justification": ""}
+    result = prepare(draft, dict(draft))
+    assert result["outcome"] == "complete"
+    assert {item["field"] for item in result["transfer"]} == set(draft)
+    assert all(item["disposition"] == "encoded" for item in result["transfer"])
+    actual = execute(result)
+    assert actual["report"]["outcome"] == "filled"
+    assert actual["report"]["filled_fields"] == sorted(draft)
+    assert len(actual["events"]) == 2 * len(draft)
+    controls = {
+        item["name"]: item for item in actual["after"] if not item["name"].endswith("_status]")
+    }
+    assert controls["project[name]"]["value"] == draft["name"]
+    assert controls["project[build_justification]"]["value"] == ""
+    assert any(
+        item["name"] == "project[build_status]" and item["value"] == "Met" and item["checked"]
+        for item in actual["after"]
+    )
+
+
+def test_script_artifact_and_reporting_do_not_depend_on_observed_answers():
+    draft = {"description": "\t \x00café\u00a0 ", "build_status": "Met", "build_justification": ""}
+    records = [
+        {},
+        dict(draft),
+        {"description": None, "build_status": "?", "build_justification": None},
+        {"description": "other", "build_status": "Unmet", "build_justification": "existing"},
+        {"description": 12, "build_status": [], "build_justification": False},
+    ]
+    results = [prepare(draft, record) for record in records]
+    assert all(result == results[0] for result in results)
+    assert {row["field"] for row in results[0]["transfer"]} == set(draft)
+    assert all(row["disposition"] == "encoded" for row in results[0]["transfer"])
+
+
 @pytest.mark.parametrize(
     ("draft", "record", "outcome"),
     [
         ({}, {}, "no_supplied_transferable_answers"),
-        ({"name": "old"}, {"name": "old"}, "no_changes"),
+        ({"name": "old"}, {"name": "old"}, "complete"),
         ({"build_status": "?"}, {}, "no_transferable_changes"),
         ({"name": "new", "build_status": "?"}, {}, "partial"),
         ({"name": "new"}, {}, "complete"),
     ],
 )
-def test_scripts_share_all_five_outcomes(draft, record, outcome):
+def test_script_outcomes(draft, record, outcome):
     result = prepare(draft, record)
     assert result["outcome"] == outcome
     assert (result["artifact"] is not None) == (outcome in {"complete", "partial"})

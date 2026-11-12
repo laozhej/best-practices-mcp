@@ -44,10 +44,6 @@ best_practices_mcp = ["data/*.json", "data/*.txt", "data/*.md"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra"
-# Supplemental upstream implementation comparisons are explicit maintainer checks.
-# Naming their directory or file directly still collects them (see make oracle-check).
-norecursedirs = ["optional"]
-
 [tool.ruff]
 target-version = "py311"
 line-length = 100

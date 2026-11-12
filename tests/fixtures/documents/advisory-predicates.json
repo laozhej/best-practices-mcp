@@ -1,6 +1,5 @@
 {
-  "upstream_revision": "868e1677339a3fdb48851b0c2ae8862c553115eb",
-  "source": "app/models/project.rb:contains_url?,justification_good?",
+  "authority": "docs/specification.md section 4: advisory-validation minimum length, exact comment prefix and URL-pattern rules",
   "cases": [
     {"text": null, "usable": false, "url": false},
     {"text": "", "usable": false, "url": false},

@@ -17,12 +17,12 @@ _CONDITIONAL_CHECKS = ["conditional_requirements"]
 
 
 def usable_justification(value: Any) -> bool:
-    """Match Project#justification_good? without stripping supplied text."""
+    """Apply the agreed advisory minimum length and exact comment prefix."""
     return type(value) is str and len(value) >= 5 and not value.startswith("// ")
 
 
 def contains_url(value: Any) -> bool:
-    """Match Project#contains_url?; this deliberately does not parse or fetch URLs."""
+    """Apply the agreed advisory URL pattern without parsing or fetching URLs."""
     return type(value) is str and not value.startswith("// ") and _URL.search(value) is not None
 
 

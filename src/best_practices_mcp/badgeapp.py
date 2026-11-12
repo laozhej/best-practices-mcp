@@ -306,19 +306,11 @@ class BadgeAppClient:
         }
 
     async def get_project_snapshot(self, project_id: int) -> tuple[dict, dict]:
-        """Read a complete public record for predictions; preserve missing statuses.
-
-        Pinned _project.json.jbuilder deliberately omits blank justifications.
-        Only this complete-record path fills those omitted known fields with "";
-        the public progress result continues to report actual field presence.
-        """
+        """Read public project identity and observation metadata for artifact preparation."""
         _positive_integer(project_id, "project_id")
         result = await self.http.get_json(f"/projects/{project_id}.json")
-        record = _normalized_record(_record(result.data, project_id))
+        record = _record(result.data, project_id)
         observation = _observation(result, record)
-        for level in LEVELS:
-            for definition in get_criteria(level)["criteria"]:
-                record.setdefault(definition["justification_field"], "")
         return record, observation
 
     async def get_project_progress(

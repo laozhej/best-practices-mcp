@@ -1,6 +1,6 @@
 """Build and inspect an installed wheel offline, outside the source checkout.
 
-Uses the active venv's dependency set; fresh dependency/platform qualification is G5.
+Uses the active venv's dependencies; fresh installation is checked separately.
 """
 
 import json
@@ -83,15 +83,11 @@ def check_archives(dist: Path) -> Path:
             "/vendor/badgeapp/source.json",
             "/vendor/badgeapp/LICENSE",
             "/scripts/generate_catalog.py",
-            "/scripts/qa.py",
+            "/scripts/verification_support.py",
             "/tests/test_contracts.py",
-            "/tests/fixtures/upstream/generate_oracle.rb",
-            "/tests/fixtures/upstream/m3_oracle.rb",
             "/tests/fixtures/forms/run_script.mjs",
             "/tests/fixtures/forms/passing.html",
-            "/vendor/badgeapp-m3/source.json",
-            "/vendor/badgeapp-m3/lib/criterion_status.rb",
-            "/vendor/badgeapp-m3/docs/automation-approach.md",
+            "/vendor/badgeapp/docs/automation-approach.md",
             "/package.json",
             "/package-lock.json",
             "/.nvmrc",
@@ -99,10 +95,11 @@ def check_archives(dist: Path) -> Path:
             "/.tool-versions",
             "/.github/release-please-config.json",
             "/.github/.release-please-manifest.json",
-            "/examples/m3_document.json",
+            "/examples/host.py",
         ):
             assert any(name.endswith(suffix) for name in names), suffix
         assert not any("/docs/live-qa/" in name for name in names)
+        assert not any(name.endswith((".rb", ".erb", ".jbuilder")) for name in names)
     return wheel
 
 
@@ -137,7 +134,7 @@ def main() -> None:
             f"Installed offline catalog: {len(summary['levels'])} levels; "
             f"live MCP tools: {len(summary['live_tools'])}"
         )
-        print("Active venv supplies pinned dependencies; fresh-environment release check is G5.")
+        print("Active venv supplies dependencies; use check-fresh-package for fresh installation.")
 
 
 if __name__ == "__main__":

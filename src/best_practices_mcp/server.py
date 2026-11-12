@@ -43,11 +43,16 @@ DOCUMENT_TOOLS = {
     "build_draft": "Patch a caller-owned document without storage or network.",
     "validate_draft": "Check supplied answers mechanically against pinned criteria offline.",
     "prepare_update_url": (
-        "Prepare a BadgeApp edit URL and field predictions from a fresh public read. "
+        "Prepare a BadgeApp edit URL and included/excluded field report. "
+        "Verify the target by public read. "
+        "Supplied text is encoded without modification. BadgeApp documents trimming leading "
+        "and trailing whitespace from URL-proposed justification text when applying it "
+        "to the edit form. "
         "Does not open or save it."
     ),
     "prepare_update_script": (
-        "Prepare a guarded form-fill script and field predictions. Does not execute or save it."
+        "Prepare a guarded form-fill script and included/excluded field report. "
+        "Does not execute or save it."
     ),
 }
 

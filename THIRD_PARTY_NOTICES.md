@@ -8,7 +8,7 @@ The packaged criteria catalog and retained upstream source materials derive from
 
 > Copyright (c) 2015-2016 The Linux Foundation, the Institute for Defense Analyses, and other project contributors.
 
-The complete upstream license is retained in `src/best_practices_mcp/data/BADGEAPP-LICENSE.txt`, in the installed package as `best_practices_mcp/data/BADGEAPP-LICENSE.txt`, and alongside each vendored source snapshot. The packaged provenance manifest records source inputs and hashes. Development-only Ruby diagnostics and synthetic-form source references retain their upstream provenance; they introduce no Ruby runtime dependency.
+The complete upstream license is retained in `src/best_practices_mcp/data/BADGEAPP-LICENSE.txt`, in the installed package as `best_practices_mcp/data/BADGEAPP-LICENSE.txt`, and alongside each vendored source snapshot. The packaged provenance manifest records source inputs and hashes. Synthetic HTML test controls retain a concise record of the upstream source paths consulted during derivation. Copied Ruby implementation files and Rails templates are not included.
 
 ## Live project-entry data
 

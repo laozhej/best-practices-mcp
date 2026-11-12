@@ -16,7 +16,7 @@ NETWORK_TOOLS = frozenset(
 
 
 def tool_definition(name: str, description: str) -> Tool:
-    """Describe a tool only when a later milestone supplies its real handler."""
+    """Build an SDK tool definition from its schemas and capability annotations."""
     mutation = name == "update_draft"
     return Tool(
         name=name,

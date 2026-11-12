@@ -12,38 +12,55 @@ coverage_check = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(coverage_check)
 
 
-def test_supplemental_checks_require_explicit_collection(tmp_path):
-    """The real pytest config excludes optional checks without making them unusable."""
-    import os
-    import shutil
+def test_slow_coverage_stage_announces_progress(monkeypatch, capsys):
     import subprocess
+    from unittest.mock import Mock
 
-    shutil.copyfile(ROOT / "pyproject.toml", tmp_path / "pyproject.toml")
-    required = tmp_path / "tests" / "test_required_probe.py"
-    optional = tmp_path / "tests" / "optional" / "test_optional_probe.py"
-    optional.parent.mkdir(parents=True)
-    required.write_text("def test_required_probe(): pass\n", encoding="utf-8")
-    optional.write_text("def test_optional_probe(): pass\n", encoding="utf-8")
-    env = {key: value for key, value in os.environ.items() if not key.startswith("COVERAGE_")}
-    env["PYTEST_DISABLE_PLUGIN_AUTOLOAD"] = "1"
-    for arguments, included, excluded in (
-        ([], "test_required_probe", "test_optional_probe"),
-        (["tests"], "test_required_probe", "test_optional_probe"),
-        (["tests/optional"], "test_optional_probe", "test_required_probe"),
-        (["tests/optional/test_optional_probe.py"], "test_optional_probe", "test_required_probe"),
-    ):
-        result = subprocess.run(
-            [sys.executable, "-m", "pytest", "--collect-only", "-q", *arguments],
-            cwd=tmp_path,
-            env=env,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            timeout=20,
-        )
-        assert result.returncode == 0, result.stdout + result.stderr
-        assert included in result.stdout
-        assert excluded not in result.stdout
+    process = Mock()
+    process.wait.side_effect = [subprocess.TimeoutExpired("coverage", 15), 0]
+    ticks = iter([0, 0, 15, 15])
+    monkeypatch.setattr(coverage_check.time, "monotonic", lambda: next(ticks))
+    assert coverage_check.wait_with_progress(process, "run") is False
+    assert "Coverage run: still running (15s elapsed)" in capsys.readouterr().out
+    assert process.wait.call_count == 2
+    process.kill.assert_not_called()
+
+
+def test_coverage_stage_deadline_kills_child(monkeypatch):
+    import subprocess
+    from unittest.mock import Mock
+
+    process = Mock()
+    process.wait.side_effect = [
+        subprocess.TimeoutExpired("coverage", 15),
+        -9,
+    ]
+    ticks = iter([0, 590, 600, 600])
+    monkeypatch.setattr(coverage_check.time, "monotonic", lambda: next(ticks))
+    assert coverage_check.wait_with_progress(process, "run") is True
+    assert process.wait.call_args_list[0].kwargs == {"timeout": 10}
+    process.kill.assert_called_once()
+
+
+def test_coverage_command_preserves_failure_and_sanitizes_output(tmp_path, monkeypatch, capsys):
+    from unittest.mock import MagicMock
+
+    process = MagicMock(returncode=7)
+    process.__enter__.return_value = process
+
+    def launch(*args, **kwargs):
+        kwargs["stdout"].write(f"failure in {ROOT}: https://example.com/?private=1\n")
+        return process
+
+    monkeypatch.setattr(coverage_check.subprocess, "Popen", launch)
+    log = tmp_path / "coverage.log"
+    assert coverage_check.command(["run"], {}, log) == 7
+    output = capsys.readouterr().out
+    assert "Coverage run: starting" in output
+    assert "finished (exit 7)" in output
+    assert "private=1" not in output + log.read_text()
+    assert str(ROOT) not in output + log.read_text()
+    assert "failure in <repo>" in log.read_text()
 
 
 def test_failed_test_run_still_reports_and_does_not_reuse_stale_totals(tmp_path, monkeypatch):

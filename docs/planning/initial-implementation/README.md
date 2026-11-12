@@ -2,7 +2,9 @@
 
 These records preserve the planning, review and milestone history of the initial implementation. They are historical, including statements about what remained unimplemented at a particular checkpoint. The [maintained documentation](../../README.md) defines current behavior. References to development commit IDs identify the preserved development repository; those commits are not assumed to exist in the clean public history.
 
-Detailed HTML QA reports, execution logs, test-count chronology and earlier document versions are archived privately. The concise milestone records retain design-relevant findings, fixes, qualification outcomes and limits. Old report paths appearing in historical plans describe the original process; new generated reports and evidence use ignored `build/qa/`.
+Detailed HTML QA reports, execution logs, test-count chronology and earlier document versions are archived privately. The concise milestone records retain design-relevant findings, fixes, qualification outcomes and limits. The milestone report generator and `demo-m*` commands have been retired. Commands and report paths in these historical plans describe the original process; use the [current validation commands](../../../README.md#validate-the-implementation) for maintained checks.
+
+The optional Ruby comparisons and copied implementation sources described in these historical records were removed during pre-release cleanup. The investigation remains in the preserved development repository. Current verification follows the [testing policy](../../testing-policy.md); references here to removed test and vendor paths describe the earlier development state.
 
 ## Planning and review
 

@@ -351,7 +351,8 @@ def test_scope_and_overrides_are_explicit_without_mutating_original() -> None:
 
 
 @pytest.mark.parametrize(
-    "outcome", ["partial", "complete", "no_changes", "no_transferable_changes"]
+    "outcome",
+    ["partial", "complete", "no_supplied_transferable_answers", "no_transferable_changes"],
 )
 def test_artifact_outcomes_and_stale_artifacts_are_visible(outcome) -> None:
     artifact = (
@@ -363,7 +364,14 @@ def test_artifact_outcomes_and_stale_artifacts_are_visible(outcome) -> None:
         "schema_version": 1,
         "outcome": outcome,
         "artifact": artifact,
-        "transfer": {"blocked": ["name"]},
+        "transfer": [
+            {
+                "field": "unknown",
+                "disposition": "unsupported",
+                "reason": "unknown_field",
+                "override": False,
+            }
+        ],
         "no_artifact_reason": "reason",
     }
     client = FakeClient(lambda *_: result(payload))
@@ -371,7 +379,7 @@ def test_artifact_outcomes_and_stale_artifacts_are_visible(outcome) -> None:
     app.project_id, app.level, app.document = 123, "passing", {}
     app.artifacts["url"] = "stale"
     asyncio.run(app.prepare_url())
-    assert any(outcome in line and "blocked" in line for line in output)
+    assert any(outcome in line and "unsupported" in line for line in output)
     assert app.artifacts == ({"url": artifact["url"]} if artifact else {})
 
 
@@ -453,7 +461,7 @@ def test_real_document_roundtrip_ignores_malformed_stored_file(tmp_path) -> None
 
 
 def proposal_results(output: str) -> list[dict]:
-    marker = "Proposal only: inspect predicted effects and warnings; nothing has been applied.\n"
+    marker = "Proposal only: inspect included and excluded fields; nothing has been applied.\n"
     return [json.JSONDecoder().raw_decode(section)[0] for section in output.split(marker)[1:]]
 
 
@@ -477,8 +485,8 @@ def test_real_generation_without_validation_exports_exact_artifacts(tmp_path) ->
         assert path.read_bytes() == payload["artifact"][key].encode("utf-8")
     assert explanation in unquote(override.read_text(encoding="utf-8"))
     assert not (tmp_path / "untouched").exists()
-    assert "expected_application describes edit-form effects only" in completed.stdout
-    assert "does not predict save-time validation or persistence" in completed.stdout
+    assert "The report describes artifact contents." in completed.stdout
+    assert "Review actual field values in BadgeApp before saving." in completed.stdout
 
 
 @pytest.mark.parametrize("invalid", [b'{"name":"\\ud800"}', b'{"extra":[1e999]}'])
