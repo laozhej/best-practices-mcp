@@ -1,0 +1,5064 @@
+{
+  "revision": "868e1677339a3fdb48851b0c2ae8862c553115eb",
+  "oracle": "Pinned Ruby controller methods and Project predicates with minimal ActiveSupport stand-ins; no Python implementation imports",
+  "cases": [
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "?",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": ""
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [
+          "description_good_status"
+        ],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Met",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Met",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": ""
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "old explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "old explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": []
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "\t new explanation \n"
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": "new explanation"
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    },
+    {
+      "record": {
+        "description_good_status": "Unmet",
+        "description_good_justification": "new explanation"
+      },
+      "draft": {
+        "description_good_status": "Unmet",
+        "description_good_justification": " new explanation "
+      },
+      "overrides": [
+        "description_good_status",
+        "description_good_justification"
+      ],
+      "expected": {
+        "saved_after": {
+          "description_good_status": "Unmet",
+          "description_good_justification": " new explanation "
+        },
+        "blocked_statuses": [],
+        "effective_overrides": [
+          "description_good_justification",
+          "description_good_status"
+        ]
+      }
+    }
+  ],
+  "predicates": [
+    {
+      "text": null,
+      "justification_good": false,
+      "contains_url": false
+    },
+    {
+      "text": "",
+      "justification_good": false,
+      "contains_url": false
+    },
+    {
+      "text": "abcd",
+      "justification_good": false,
+      "contains_url": false
+    },
+    {
+      "text": "abcde",
+      "justification_good": true,
+      "contains_url": false
+    },
+    {
+      "text": "     ",
+      "justification_good": true,
+      "contains_url": false
+    },
+    {
+      "text": "// explanation",
+      "justification_good": false,
+      "contains_url": false
+    },
+    {
+      "text": "// https://example.org",
+      "justification_good": false,
+      "contains_url": false
+    },
+    {
+      "text": "\n// https://example.org",
+      "justification_good": true,
+      "contains_url": true
+    },
+    {
+      "text": "prefix https://a.b suffix",
+      "justification_good": true,
+      "contains_url": true
+    },
+    {
+      "text": "http://localhost",
+      "justification_good": true,
+      "contains_url": false
+    },
+    {
+      "text": "https://example.org",
+      "justification_good": true,
+      "contains_url": true
+    },
+    {
+      "text": "HTTPS://example.org",
+      "justification_good": true,
+      "contains_url": false
+    },
+    {
+      "text": "https://a.\n",
+      "justification_good": true,
+      "contains_url": true
+    },
+    {
+      "text": "     ",
+      "justification_good": true,
+      "contains_url": false
+    }
+  ]
+}

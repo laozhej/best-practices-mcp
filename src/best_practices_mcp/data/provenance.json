@@ -1,0 +1,1706 @@
+{
+  "counts": {
+    "baseline-1": 24,
+    "baseline-2": 19,
+    "baseline-3": 21,
+    "gold": 23,
+    "passing": 67,
+    "silver": 55
+  },
+  "criteria_metadata": {
+    "baseline-1/osps_ac_01_01": {
+      "description_key": "en.criteria.baseline-1.osps_ac_01_01.description",
+      "details_key": "en.criteria.baseline-1.osps_ac_01_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_ac_02_01": {
+      "description_key": "en.criteria.baseline-1.osps_ac_02_01.description",
+      "details_key": "en.criteria.baseline-1.osps_ac_02_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_ac_03_01": {
+      "description_key": "en.criteria.baseline-1.osps_ac_03_01.description",
+      "details_key": "en.criteria.baseline-1.osps_ac_03_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_ac_03_02": {
+      "description_key": "en.criteria.baseline-1.osps_ac_03_02.description",
+      "details_key": "en.criteria.baseline-1.osps_ac_03_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_br_01_01": {
+      "description_key": "en.criteria.baseline-1.osps_br_01_01.description",
+      "details_key": "en.criteria.baseline-1.osps_br_01_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_br_01_03": {
+      "description_key": "en.criteria.baseline-1.osps_br_01_03.description",
+      "details_key": "en.criteria.baseline-1.osps_br_01_03.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_br_03_01": {
+      "description_key": "en.criteria.baseline-1.osps_br_03_01.description",
+      "details_key": "en.criteria.baseline-1.osps_br_03_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_br_03_02": {
+      "description_key": "en.criteria.baseline-1.osps_br_03_02.description",
+      "details_key": "en.criteria.baseline-1.osps_br_03_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_br_07_01": {
+      "description_key": "en.criteria.baseline-1.osps_br_07_01.description",
+      "details_key": "en.criteria.baseline-1.osps_br_07_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_do_01_01": {
+      "description_key": "en.criteria.baseline-1.osps_do_01_01.description",
+      "details_key": "en.criteria.baseline-1.osps_do_01_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_do_02_01": {
+      "description_key": "en.criteria.baseline-1.osps_do_02_01.description",
+      "details_key": "en.criteria.baseline-1.osps_do_02_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_gv_02_01": {
+      "description_key": "en.criteria.baseline-1.osps_gv_02_01.description",
+      "details_key": "en.criteria.baseline-1.osps_gv_02_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_gv_03_01": {
+      "description_key": "en.criteria.baseline-1.osps_gv_03_01.description",
+      "details_key": "en.criteria.baseline-1.osps_gv_03_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_le_02_01": {
+      "description_key": "en.criteria.baseline-1.osps_le_02_01.description",
+      "details_key": "en.criteria.baseline-1.osps_le_02_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_le_02_02": {
+      "description_key": "en.criteria.baseline-1.osps_le_02_02.description",
+      "details_key": "en.criteria.baseline-1.osps_le_02_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_le_03_01": {
+      "description_key": "en.criteria.baseline-1.osps_le_03_01.description",
+      "details_key": "en.criteria.baseline-1.osps_le_03_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_le_03_02": {
+      "description_key": "en.criteria.baseline-1.osps_le_03_02.description",
+      "details_key": "en.criteria.baseline-1.osps_le_03_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_qa_01_01": {
+      "description_key": "en.criteria.baseline-1.osps_qa_01_01.description",
+      "details_key": "en.criteria.baseline-1.osps_qa_01_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_qa_01_02": {
+      "description_key": "en.criteria.baseline-1.osps_qa_01_02.description",
+      "details_key": "en.criteria.baseline-1.osps_qa_01_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_qa_02_01": {
+      "description_key": "en.criteria.baseline-1.osps_qa_02_01.description",
+      "details_key": "en.criteria.baseline-1.osps_qa_02_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_qa_04_01": {
+      "description_key": "en.criteria.baseline-1.osps_qa_04_01.description",
+      "details_key": "en.criteria.baseline-1.osps_qa_04_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_qa_05_01": {
+      "description_key": "en.criteria.baseline-1.osps_qa_05_01.description",
+      "details_key": "en.criteria.baseline-1.osps_qa_05_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_qa_05_02": {
+      "description_key": "en.criteria.baseline-1.osps_qa_05_02.description",
+      "details_key": "en.criteria.baseline-1.osps_qa_05_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-1/osps_vm_02_01": {
+      "description_key": "en.criteria.baseline-1.osps_vm_02_01.description",
+      "details_key": "en.criteria.baseline-1.osps_vm_02_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_ac_04_01": {
+      "description_key": "en.criteria.baseline-2.osps_ac_04_01.description",
+      "details_key": "en.criteria.baseline-2.osps_ac_04_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_br_02_01": {
+      "description_key": "en.criteria.baseline-2.osps_br_02_01.description",
+      "details_key": "en.criteria.baseline-2.osps_br_02_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_br_04_01": {
+      "description_key": "en.criteria.baseline-2.osps_br_04_01.description",
+      "details_key": "en.criteria.baseline-2.osps_br_04_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_br_05_01": {
+      "description_key": "en.criteria.baseline-2.osps_br_05_01.description",
+      "details_key": "en.criteria.baseline-2.osps_br_05_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_br_06_01": {
+      "description_key": "en.criteria.baseline-2.osps_br_06_01.description",
+      "details_key": "en.criteria.baseline-2.osps_br_06_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_do_06_01": {
+      "description_key": "en.criteria.baseline-2.osps_do_06_01.description",
+      "details_key": "en.criteria.baseline-2.osps_do_06_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_do_07_01": {
+      "description_key": "en.criteria.baseline-2.osps_do_07_01.description",
+      "details_key": "en.criteria.baseline-2.osps_do_07_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_gv_01_01": {
+      "description_key": "en.criteria.baseline-2.osps_gv_01_01.description",
+      "details_key": "en.criteria.baseline-2.osps_gv_01_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_gv_01_02": {
+      "description_key": "en.criteria.baseline-2.osps_gv_01_02.description",
+      "details_key": "en.criteria.baseline-2.osps_gv_01_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_gv_03_02": {
+      "description_key": "en.criteria.baseline-2.osps_gv_03_02.description",
+      "details_key": "en.criteria.baseline-2.osps_gv_03_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_le_01_01": {
+      "description_key": "en.criteria.baseline-2.osps_le_01_01.description",
+      "details_key": "en.criteria.baseline-2.osps_le_01_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_qa_03_01": {
+      "description_key": "en.criteria.baseline-2.osps_qa_03_01.description",
+      "details_key": "en.criteria.baseline-2.osps_qa_03_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_qa_06_01": {
+      "description_key": "en.criteria.baseline-2.osps_qa_06_01.description",
+      "details_key": "en.criteria.baseline-2.osps_qa_06_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_sa_01_01": {
+      "description_key": "en.criteria.baseline-2.osps_sa_01_01.description",
+      "details_key": "en.criteria.baseline-2.osps_sa_01_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_sa_02_01": {
+      "description_key": "en.criteria.baseline-2.osps_sa_02_01.description",
+      "details_key": "en.criteria.baseline-2.osps_sa_02_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_sa_03_01": {
+      "description_key": "en.criteria.baseline-2.osps_sa_03_01.description",
+      "details_key": "en.criteria.baseline-2.osps_sa_03_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_vm_01_01": {
+      "description_key": "en.criteria.baseline-2.osps_vm_01_01.description",
+      "details_key": "en.criteria.baseline-2.osps_vm_01_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_vm_03_01": {
+      "description_key": "en.criteria.baseline-2.osps_vm_03_01.description",
+      "details_key": "en.criteria.baseline-2.osps_vm_03_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-2/osps_vm_04_01": {
+      "description_key": "en.criteria.baseline-2.osps_vm_04_01.description",
+      "details_key": "en.criteria.baseline-2.osps_vm_04_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_ac_04_02": {
+      "description_key": "en.criteria.baseline-3.osps_ac_04_02.description",
+      "details_key": "en.criteria.baseline-3.osps_ac_04_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_br_01_04": {
+      "description_key": "en.criteria.baseline-3.osps_br_01_04.description",
+      "details_key": "en.criteria.baseline-3.osps_br_01_04.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_br_02_02": {
+      "description_key": "en.criteria.baseline-3.osps_br_02_02.description",
+      "details_key": "en.criteria.baseline-3.osps_br_02_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_br_07_02": {
+      "description_key": "en.criteria.baseline-3.osps_br_07_02.description",
+      "details_key": "en.criteria.baseline-3.osps_br_07_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_do_03_01": {
+      "description_key": "en.criteria.baseline-3.osps_do_03_01.description",
+      "details_key": "en.criteria.baseline-3.osps_do_03_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_do_03_02": {
+      "description_key": "en.criteria.baseline-3.osps_do_03_02.description",
+      "details_key": "en.criteria.baseline-3.osps_do_03_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_do_04_01": {
+      "description_key": "en.criteria.baseline-3.osps_do_04_01.description",
+      "details_key": "en.criteria.baseline-3.osps_do_04_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_do_05_01": {
+      "description_key": "en.criteria.baseline-3.osps_do_05_01.description",
+      "details_key": "en.criteria.baseline-3.osps_do_05_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_gv_04_01": {
+      "description_key": "en.criteria.baseline-3.osps_gv_04_01.description",
+      "details_key": "en.criteria.baseline-3.osps_gv_04_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_qa_02_02": {
+      "description_key": "en.criteria.baseline-3.osps_qa_02_02.description",
+      "details_key": "en.criteria.baseline-3.osps_qa_02_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_qa_04_02": {
+      "description_key": "en.criteria.baseline-3.osps_qa_04_02.description",
+      "details_key": "en.criteria.baseline-3.osps_qa_04_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_qa_06_02": {
+      "description_key": "en.criteria.baseline-3.osps_qa_06_02.description",
+      "details_key": "en.criteria.baseline-3.osps_qa_06_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_qa_06_03": {
+      "description_key": "en.criteria.baseline-3.osps_qa_06_03.description",
+      "details_key": "en.criteria.baseline-3.osps_qa_06_03.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_qa_07_01": {
+      "description_key": "en.criteria.baseline-3.osps_qa_07_01.description",
+      "details_key": "en.criteria.baseline-3.osps_qa_07_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_sa_03_02": {
+      "description_key": "en.criteria.baseline-3.osps_sa_03_02.description",
+      "details_key": "en.criteria.baseline-3.osps_sa_03_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_vm_04_02": {
+      "description_key": "en.criteria.baseline-3.osps_vm_04_02.description",
+      "details_key": "en.criteria.baseline-3.osps_vm_04_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_vm_05_01": {
+      "description_key": "en.criteria.baseline-3.osps_vm_05_01.description",
+      "details_key": "en.criteria.baseline-3.osps_vm_05_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_vm_05_02": {
+      "description_key": "en.criteria.baseline-3.osps_vm_05_02.description",
+      "details_key": "en.criteria.baseline-3.osps_vm_05_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_vm_05_03": {
+      "description_key": "en.criteria.baseline-3.osps_vm_05_03.description",
+      "details_key": "en.criteria.baseline-3.osps_vm_05_03.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_vm_06_01": {
+      "description_key": "en.criteria.baseline-3.osps_vm_06_01.description",
+      "details_key": "en.criteria.baseline-3.osps_vm_06_01.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "baseline-3/osps_vm_06_02": {
+      "description_key": "en.criteria.baseline-3.osps_vm_06_02.description",
+      "details_key": "en.criteria.baseline-3.osps_vm_06_02.details",
+      "future": false,
+      "major": "General",
+      "minor": "Controls",
+      "obsolete": false
+    },
+    "gold/achieve_silver": {
+      "description_key": "en.criteria.2.achieve_silver.description",
+      "details_key": null,
+      "future": false,
+      "major": "Basics",
+      "minor": "Prerequisites",
+      "obsolete": false
+    },
+    "gold/build_reproducible": {
+      "description_key": "en.criteria.2.build_reproducible.description",
+      "details_key": "en.criteria.2.build_reproducible.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Working build system",
+      "obsolete": false
+    },
+    "gold/bus_factor": {
+      "description_key": "en.criteria.2.bus_factor.description",
+      "details_key": "en.criteria.1.bus_factor.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Project oversight",
+      "obsolete": false
+    },
+    "gold/code_review_standards": {
+      "description_key": "en.criteria.2.code_review_standards.description",
+      "details_key": "en.criteria.2.code_review_standards.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Coding standards",
+      "obsolete": false
+    },
+    "gold/contributors_unassociated": {
+      "description_key": "en.criteria.2.contributors_unassociated.description",
+      "details_key": "en.criteria.2.contributors_unassociated.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Project oversight",
+      "obsolete": false
+    },
+    "gold/copyright_per_file": {
+      "description_key": "en.criteria.2.copyright_per_file.description",
+      "details_key": "en.criteria.2.copyright_per_file.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Other",
+      "obsolete": false
+    },
+    "gold/crypto_tls12": {
+      "description_key": "en.criteria.2.crypto_tls12.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "gold/crypto_used_network": {
+      "description_key": "en.criteria.2.crypto_used_network.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "gold/dynamic_analysis": {
+      "description_key": "en.criteria.2.dynamic_analysis.description",
+      "details_key": "en.criteria.0.dynamic_analysis.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Dynamic code analysis",
+      "obsolete": false
+    },
+    "gold/dynamic_analysis_enable_assertions": {
+      "description_key": "en.criteria.2.dynamic_analysis_enable_assertions.description",
+      "details_key": "en.criteria.0.dynamic_analysis_enable_assertions.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Dynamic code analysis",
+      "obsolete": false
+    },
+    "gold/hardened_site": {
+      "description_key": "en.criteria.2.hardened_site.description",
+      "details_key": "en.criteria.2.hardened_site.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Secured delivery against man-in-the-middle (MITM) attacks",
+      "obsolete": false
+    },
+    "gold/hardening": {
+      "description_key": "en.criteria.2.hardening.description",
+      "details_key": "en.criteria.1.hardening.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Other security issues",
+      "obsolete": false
+    },
+    "gold/license_per_file": {
+      "description_key": "en.criteria.2.license_per_file.description",
+      "details_key": "en.criteria.2.license_per_file.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Other",
+      "obsolete": false
+    },
+    "gold/repo_distributed": {
+      "description_key": "en.criteria.2.repo_distributed.description",
+      "details_key": "en.criteria.0.repo_distributed.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Public version-controlled source repository",
+      "obsolete": false
+    },
+    "gold/require_2FA": {
+      "description_key": "en.criteria.2.require_2FA.description",
+      "details_key": null,
+      "future": false,
+      "major": "Change Control",
+      "minor": "Public version-controlled source repository",
+      "obsolete": false
+    },
+    "gold/secure_2FA": {
+      "description_key": "en.criteria.2.secure_2FA.description",
+      "details_key": "en.criteria.2.secure_2FA.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Public version-controlled source repository",
+      "obsolete": false
+    },
+    "gold/security_review": {
+      "description_key": "en.criteria.2.security_review.description",
+      "details_key": "en.criteria.2.security_review.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Other security issues",
+      "obsolete": false
+    },
+    "gold/small_tasks": {
+      "description_key": "en.criteria.2.small_tasks.description",
+      "details_key": "en.criteria.2.small_tasks.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Public version-controlled source repository",
+      "obsolete": false
+    },
+    "gold/test_branch_coverage80": {
+      "description_key": "en.criteria.2.test_branch_coverage80.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "gold/test_continuous_integration": {
+      "description_key": "en.criteria.2.test_continuous_integration.description",
+      "details_key": "en.criteria.2.test_continuous_integration.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "gold/test_invocation": {
+      "description_key": "en.criteria.2.test_invocation.description",
+      "details_key": "en.criteria.0.test_invocation.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "gold/test_statement_coverage90": {
+      "description_key": "en.criteria.2.test_statement_coverage90.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "gold/two_person_review": {
+      "description_key": "en.criteria.2.two_person_review.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Coding standards",
+      "obsolete": false
+    },
+    "passing/build": {
+      "description_key": "en.criteria.0.build.description",
+      "details_key": "en.criteria.0.build.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Working build system",
+      "obsolete": false
+    },
+    "passing/build_common_tools": {
+      "description_key": "en.criteria.0.build_common_tools.description",
+      "details_key": "en.criteria.0.build_common_tools.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Working build system",
+      "obsolete": false
+    },
+    "passing/build_floss_tools": {
+      "description_key": "en.criteria.0.build_floss_tools.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Working build system",
+      "obsolete": false
+    },
+    "passing/contribution": {
+      "description_key": "en.criteria.0.contribution.description",
+      "details_key": "en.criteria.0.contribution.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Basic project website content",
+      "obsolete": false
+    },
+    "passing/contribution_requirements": {
+      "description_key": "en.criteria.0.contribution_requirements.description",
+      "details_key": null,
+      "future": false,
+      "major": "Basics",
+      "minor": "Basic project website content",
+      "obsolete": false
+    },
+    "passing/crypto_call": {
+      "description_key": "en.criteria.0.crypto_call.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/crypto_floss": {
+      "description_key": "en.criteria.0.crypto_floss.description",
+      "details_key": "en.criteria.0.crypto_floss.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/crypto_keylength": {
+      "description_key": "en.criteria.0.crypto_keylength.description",
+      "details_key": "en.criteria.0.crypto_keylength.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/crypto_password_storage": {
+      "description_key": "en.criteria.0.crypto_password_storage.description",
+      "details_key": "en.criteria.0.crypto_password_storage.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/crypto_pfs": {
+      "description_key": "en.criteria.0.crypto_pfs.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/crypto_published": {
+      "description_key": "en.criteria.0.crypto_published.description",
+      "details_key": "en.criteria.0.crypto_published.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/crypto_random": {
+      "description_key": "en.criteria.0.crypto_random.description",
+      "details_key": "en.criteria.0.crypto_random.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/crypto_weaknesses": {
+      "description_key": "en.criteria.0.crypto_weaknesses.description",
+      "details_key": "en.criteria.0.crypto_weaknesses.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/crypto_working": {
+      "description_key": "en.criteria.0.crypto_working.description",
+      "details_key": "en.criteria.0.crypto_working.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "passing/delivery_mitm": {
+      "description_key": "en.criteria.0.delivery_mitm.description",
+      "details_key": "en.criteria.0.delivery_mitm.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Secured delivery against man-in-the-middle (MITM) attacks",
+      "obsolete": false
+    },
+    "passing/delivery_unsigned": {
+      "description_key": "en.criteria.0.delivery_unsigned.description",
+      "details_key": "en.criteria.0.delivery_unsigned.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Secured delivery against man-in-the-middle (MITM) attacks",
+      "obsolete": false
+    },
+    "passing/description_good": {
+      "description_key": "en.criteria.0.description_good.description",
+      "details_key": "en.criteria.0.description_good.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Basic project website content",
+      "obsolete": false
+    },
+    "passing/discussion": {
+      "description_key": "en.criteria.0.discussion.description",
+      "details_key": "en.criteria.0.discussion.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Other",
+      "obsolete": false
+    },
+    "passing/documentation_basics": {
+      "description_key": "en.criteria.0.documentation_basics.description",
+      "details_key": "en.criteria.0.documentation_basics.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Documentation",
+      "obsolete": false
+    },
+    "passing/documentation_interface": {
+      "description_key": "en.criteria.0.documentation_interface.description",
+      "details_key": "en.criteria.0.documentation_interface.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Documentation",
+      "obsolete": false
+    },
+    "passing/dynamic_analysis": {
+      "description_key": "en.criteria.0.dynamic_analysis.description",
+      "details_key": "en.criteria.0.dynamic_analysis.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Dynamic code analysis",
+      "obsolete": false
+    },
+    "passing/dynamic_analysis_enable_assertions": {
+      "description_key": "en.criteria.0.dynamic_analysis_enable_assertions.description",
+      "details_key": "en.criteria.0.dynamic_analysis_enable_assertions.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Dynamic code analysis",
+      "obsolete": false
+    },
+    "passing/dynamic_analysis_fixed": {
+      "description_key": "en.criteria.0.dynamic_analysis_fixed.description",
+      "details_key": "en.criteria.0.dynamic_analysis_fixed.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Dynamic code analysis",
+      "obsolete": false
+    },
+    "passing/dynamic_analysis_unsafe": {
+      "description_key": "en.criteria.0.dynamic_analysis_unsafe.description",
+      "details_key": "en.criteria.0.dynamic_analysis_unsafe.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Dynamic code analysis",
+      "obsolete": false
+    },
+    "passing/english": {
+      "description_key": "en.criteria.0.english.description",
+      "details_key": "en.criteria.0.english.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Other",
+      "obsolete": false
+    },
+    "passing/enhancement_responses": {
+      "description_key": "en.criteria.0.enhancement_responses.description",
+      "details_key": "en.criteria.0.enhancement_responses.details",
+      "future": false,
+      "major": "Reporting",
+      "minor": "Bug-reporting process",
+      "obsolete": false
+    },
+    "passing/floss_license": {
+      "description_key": "en.criteria.0.floss_license.description",
+      "details_key": "en.criteria.0.floss_license.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "FLOSS license",
+      "obsolete": false
+    },
+    "passing/floss_license_osi": {
+      "description_key": "en.criteria.0.floss_license_osi.description",
+      "details_key": "en.criteria.0.floss_license_osi.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "FLOSS license",
+      "obsolete": false
+    },
+    "passing/interact": {
+      "description_key": "en.criteria.0.interact.description",
+      "details_key": null,
+      "future": false,
+      "major": "Basics",
+      "minor": "Basic project website content",
+      "obsolete": false
+    },
+    "passing/know_common_errors": {
+      "description_key": "en.criteria.0.know_common_errors.description",
+      "details_key": "en.criteria.0.know_common_errors.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Secure development knowledge",
+      "obsolete": false
+    },
+    "passing/know_secure_design": {
+      "description_key": "en.criteria.0.know_secure_design.description",
+      "details_key": "en.criteria.0.know_secure_design.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Secure development knowledge",
+      "obsolete": false
+    },
+    "passing/license_location": {
+      "description_key": "en.criteria.0.license_location.description",
+      "details_key": "en.criteria.0.license_location.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "FLOSS license",
+      "obsolete": false
+    },
+    "passing/maintained": {
+      "description_key": "en.criteria.0.maintained.description",
+      "details_key": "en.criteria.0.maintained.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Other",
+      "obsolete": false
+    },
+    "passing/no_leaked_credentials": {
+      "description_key": "en.criteria.0.no_leaked_credentials.description",
+      "details_key": "en.criteria.0.no_leaked_credentials.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Other security issues",
+      "obsolete": false
+    },
+    "passing/release_notes": {
+      "description_key": "en.criteria.0.release_notes.description",
+      "details_key": "en.criteria.0.release_notes.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Release notes",
+      "obsolete": false
+    },
+    "passing/release_notes_vulns": {
+      "description_key": "en.criteria.0.release_notes_vulns.description",
+      "details_key": "en.criteria.0.release_notes_vulns.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Release notes",
+      "obsolete": false
+    },
+    "passing/repo_distributed": {
+      "description_key": "en.criteria.0.repo_distributed.description",
+      "details_key": "en.criteria.0.repo_distributed.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Public version-controlled source repository",
+      "obsolete": false
+    },
+    "passing/repo_interim": {
+      "description_key": "en.criteria.0.repo_interim.description",
+      "details_key": "en.criteria.0.repo_interim.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Public version-controlled source repository",
+      "obsolete": false
+    },
+    "passing/repo_public": {
+      "description_key": "en.criteria.0.repo_public.description",
+      "details_key": "en.criteria.0.repo_public.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Public version-controlled source repository",
+      "obsolete": false
+    },
+    "passing/repo_track": {
+      "description_key": "en.criteria.0.repo_track.description",
+      "details_key": null,
+      "future": false,
+      "major": "Change Control",
+      "minor": "Public version-controlled source repository",
+      "obsolete": false
+    },
+    "passing/report_archive": {
+      "description_key": "en.criteria.0.report_archive.description",
+      "details_key": null,
+      "future": false,
+      "major": "Reporting",
+      "minor": "Bug-reporting process",
+      "obsolete": false
+    },
+    "passing/report_process": {
+      "description_key": "en.criteria.0.report_process.description",
+      "details_key": null,
+      "future": false,
+      "major": "Reporting",
+      "minor": "Bug-reporting process",
+      "obsolete": false
+    },
+    "passing/report_responses": {
+      "description_key": "en.criteria.0.report_responses.description",
+      "details_key": null,
+      "future": false,
+      "major": "Reporting",
+      "minor": "Bug-reporting process",
+      "obsolete": false
+    },
+    "passing/report_tracker": {
+      "description_key": "en.criteria.0.report_tracker.description",
+      "details_key": null,
+      "future": false,
+      "major": "Reporting",
+      "minor": "Bug-reporting process",
+      "obsolete": false
+    },
+    "passing/sites_https": {
+      "description_key": "en.criteria.0.sites_https.description",
+      "details_key": "en.criteria.0.sites_https.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Other",
+      "obsolete": false
+    },
+    "passing/static_analysis": {
+      "description_key": "en.criteria.0.static_analysis.description",
+      "details_key": "en.criteria.0.static_analysis.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Static code analysis",
+      "obsolete": false
+    },
+    "passing/static_analysis_common_vulnerabilities": {
+      "description_key": "en.criteria.0.static_analysis_common_vulnerabilities.description",
+      "details_key": "en.criteria.0.static_analysis_common_vulnerabilities.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Static code analysis",
+      "obsolete": false
+    },
+    "passing/static_analysis_fixed": {
+      "description_key": "en.criteria.0.static_analysis_fixed.description",
+      "details_key": "en.criteria.0.static_analysis_fixed.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Static code analysis",
+      "obsolete": false
+    },
+    "passing/static_analysis_often": {
+      "description_key": "en.criteria.0.static_analysis_often.description",
+      "details_key": null,
+      "future": false,
+      "major": "Analysis",
+      "minor": "Static code analysis",
+      "obsolete": false
+    },
+    "passing/test": {
+      "description_key": "en.criteria.0.test.description",
+      "details_key": "en.criteria.0.test.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "passing/test_continuous_integration": {
+      "description_key": "en.criteria.0.test_continuous_integration.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "passing/test_invocation": {
+      "description_key": "en.criteria.0.test_invocation.description",
+      "details_key": "en.criteria.0.test_invocation.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "passing/test_most": {
+      "description_key": "en.criteria.0.test_most.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "passing/test_policy": {
+      "description_key": "en.criteria.0.test_policy.description",
+      "details_key": "en.criteria.0.test_policy.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "New functionality testing",
+      "obsolete": false
+    },
+    "passing/tests_are_added": {
+      "description_key": "en.criteria.0.tests_are_added.description",
+      "details_key": "en.criteria.0.tests_are_added.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "New functionality testing",
+      "obsolete": false
+    },
+    "passing/tests_documented_added": {
+      "description_key": "en.criteria.0.tests_documented_added.description",
+      "details_key": "en.criteria.0.tests_documented_added.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "New functionality testing",
+      "obsolete": false
+    },
+    "passing/version_semver": {
+      "description_key": "en.criteria.0.version_semver.description",
+      "details_key": "en.criteria.0.version_semver.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Unique version numbering",
+      "obsolete": false
+    },
+    "passing/version_tags": {
+      "description_key": "en.criteria.0.version_tags.description",
+      "details_key": null,
+      "future": false,
+      "major": "Change Control",
+      "minor": "Unique version numbering",
+      "obsolete": false
+    },
+    "passing/version_unique": {
+      "description_key": "en.criteria.0.version_unique.description",
+      "details_key": "en.criteria.0.version_unique.details",
+      "future": false,
+      "major": "Change Control",
+      "minor": "Unique version numbering",
+      "obsolete": false
+    },
+    "passing/vulnerabilities_critical_fixed": {
+      "description_key": "en.criteria.0.vulnerabilities_critical_fixed.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Publicly known vulnerabilities fixed",
+      "obsolete": false
+    },
+    "passing/vulnerabilities_fixed_60_days": {
+      "description_key": "en.criteria.0.vulnerabilities_fixed_60_days.description",
+      "details_key": "en.criteria.0.vulnerabilities_fixed_60_days.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Publicly known vulnerabilities fixed",
+      "obsolete": false
+    },
+    "passing/vulnerability_report_private": {
+      "description_key": "en.criteria.0.vulnerability_report_private.description",
+      "details_key": "en.criteria.0.vulnerability_report_private.details",
+      "future": false,
+      "major": "Reporting",
+      "minor": "Vulnerability report process",
+      "obsolete": false
+    },
+    "passing/vulnerability_report_process": {
+      "description_key": "en.criteria.0.vulnerability_report_process.description",
+      "details_key": "en.criteria.0.vulnerability_report_process.details",
+      "future": false,
+      "major": "Reporting",
+      "minor": "Vulnerability report process",
+      "obsolete": false
+    },
+    "passing/vulnerability_report_response": {
+      "description_key": "en.criteria.0.vulnerability_report_response.description",
+      "details_key": "en.criteria.0.vulnerability_report_response.details",
+      "future": false,
+      "major": "Reporting",
+      "minor": "Vulnerability report process",
+      "obsolete": false
+    },
+    "passing/warnings": {
+      "description_key": "en.criteria.0.warnings.description",
+      "details_key": "en.criteria.0.warnings.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Warning flags",
+      "obsolete": false
+    },
+    "passing/warnings_fixed": {
+      "description_key": "en.criteria.0.warnings_fixed.description",
+      "details_key": "en.criteria.0.warnings_fixed.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Warning flags",
+      "obsolete": false
+    },
+    "passing/warnings_strict": {
+      "description_key": "en.criteria.0.warnings_strict.description",
+      "details_key": "en.criteria.0.warnings_strict.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Warning flags",
+      "obsolete": false
+    },
+    "silver/access_continuity": {
+      "description_key": "en.criteria.1.access_continuity.description",
+      "details_key": null,
+      "future": false,
+      "major": "Basics",
+      "minor": "Project oversight",
+      "obsolete": false
+    },
+    "silver/accessibility_best_practices": {
+      "description_key": "en.criteria.1.accessibility_best_practices.description",
+      "details_key": "en.criteria.1.accessibility_best_practices.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Accessibility and internationalization",
+      "obsolete": false
+    },
+    "silver/achieve_passing": {
+      "description_key": "en.criteria.1.achieve_passing.description",
+      "details_key": null,
+      "future": false,
+      "major": "Basics",
+      "minor": "Prerequisites",
+      "obsolete": false
+    },
+    "silver/assurance_case": {
+      "description_key": "en.criteria.1.assurance_case.description",
+      "details_key": "en.criteria.1.assurance_case.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Other security issues",
+      "obsolete": false
+    },
+    "silver/automated_integration_testing": {
+      "description_key": "en.criteria.1.automated_integration_testing.description",
+      "details_key": "en.criteria.1.automated_integration_testing.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "silver/build_non_recursive": {
+      "description_key": "en.criteria.1.build_non_recursive.description",
+      "details_key": "en.criteria.1.build_non_recursive.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Working build system",
+      "obsolete": false
+    },
+    "silver/build_preserve_debug": {
+      "description_key": "en.criteria.1.build_preserve_debug.description",
+      "details_key": "en.criteria.1.build_preserve_debug.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Working build system",
+      "obsolete": false
+    },
+    "silver/build_repeatable": {
+      "description_key": "en.criteria.1.build_repeatable.description",
+      "details_key": "en.criteria.1.build_repeatable.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Working build system",
+      "obsolete": false
+    },
+    "silver/build_standard_variables": {
+      "description_key": "en.criteria.1.build_standard_variables.description",
+      "details_key": "en.criteria.1.build_standard_variables.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Working build system",
+      "obsolete": false
+    },
+    "silver/bus_factor": {
+      "description_key": "en.criteria.1.bus_factor.description",
+      "details_key": "en.criteria.1.bus_factor.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Project oversight",
+      "obsolete": false
+    },
+    "silver/code_of_conduct": {
+      "description_key": "en.criteria.1.code_of_conduct.description",
+      "details_key": "en.criteria.1.code_of_conduct.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Project oversight",
+      "obsolete": false
+    },
+    "silver/coding_standards": {
+      "description_key": "en.criteria.1.coding_standards.description",
+      "details_key": "en.criteria.1.coding_standards.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Coding standards",
+      "obsolete": false
+    },
+    "silver/coding_standards_enforced": {
+      "description_key": "en.criteria.1.coding_standards_enforced.description",
+      "details_key": "en.criteria.1.coding_standards_enforced.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Coding standards",
+      "obsolete": false
+    },
+    "silver/contribution_requirements": {
+      "description_key": "en.criteria.1.contribution_requirements.description",
+      "details_key": null,
+      "future": false,
+      "major": "Basics",
+      "minor": "Basic project website content",
+      "obsolete": false
+    },
+    "silver/crypto_algorithm_agility": {
+      "description_key": "en.criteria.1.crypto_algorithm_agility.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "silver/crypto_certificate_verification": {
+      "description_key": "en.criteria.1.crypto_certificate_verification.description",
+      "details_key": "en.criteria.1.crypto_certificate_verification.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "silver/crypto_credential_agility": {
+      "description_key": "en.criteria.1.crypto_credential_agility.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "silver/crypto_tls12": {
+      "description_key": "en.criteria.1.crypto_tls12.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "silver/crypto_used_network": {
+      "description_key": "en.criteria.1.crypto_used_network.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "silver/crypto_verification_private": {
+      "description_key": "en.criteria.1.crypto_verification_private.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "silver/crypto_weaknesses": {
+      "description_key": "en.criteria.1.crypto_weaknesses.description",
+      "details_key": "en.criteria.0.crypto_weaknesses.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Use basic good cryptographic practices",
+      "obsolete": false
+    },
+    "silver/dco": {
+      "description_key": "en.criteria.1.dco.description",
+      "details_key": "en.criteria.1.dco.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Project oversight",
+      "obsolete": false
+    },
+    "silver/dependency_monitoring": {
+      "description_key": "en.criteria.1.dependency_monitoring.description",
+      "details_key": "en.criteria.1.dependency_monitoring.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Externally-maintained components",
+      "obsolete": false
+    },
+    "silver/documentation_achievements": {
+      "description_key": "en.criteria.1.documentation_achievements.description",
+      "details_key": "en.criteria.1.documentation_achievements.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Documentation",
+      "obsolete": false
+    },
+    "silver/documentation_architecture": {
+      "description_key": "en.criteria.1.documentation_architecture.description",
+      "details_key": "en.criteria.1.documentation_architecture.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Documentation",
+      "obsolete": false
+    },
+    "silver/documentation_current": {
+      "description_key": "en.criteria.1.documentation_current.description",
+      "details_key": "en.criteria.1.documentation_current.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Documentation",
+      "obsolete": false
+    },
+    "silver/documentation_quick_start": {
+      "description_key": "en.criteria.1.documentation_quick_start.description",
+      "details_key": "en.criteria.1.documentation_quick_start.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Documentation",
+      "obsolete": false
+    },
+    "silver/documentation_roadmap": {
+      "description_key": "en.criteria.1.documentation_roadmap.description",
+      "details_key": "en.criteria.1.documentation_roadmap.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Documentation",
+      "obsolete": false
+    },
+    "silver/documentation_security": {
+      "description_key": "en.criteria.1.documentation_security.description",
+      "details_key": "en.criteria.1.documentation_security.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Documentation",
+      "obsolete": false
+    },
+    "silver/dynamic_analysis_unsafe": {
+      "description_key": "en.criteria.1.dynamic_analysis_unsafe.description",
+      "details_key": "en.criteria.0.dynamic_analysis_unsafe.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Dynamic code analysis",
+      "obsolete": false
+    },
+    "silver/external_dependencies": {
+      "description_key": "en.criteria.1.external_dependencies.description",
+      "details_key": "en.criteria.1.external_dependencies.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Externally-maintained components",
+      "obsolete": false
+    },
+    "silver/governance": {
+      "description_key": "en.criteria.1.governance.description",
+      "details_key": "en.criteria.1.governance.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Project oversight",
+      "obsolete": false
+    },
+    "silver/hardening": {
+      "description_key": "en.criteria.1.hardening.description",
+      "details_key": "en.criteria.1.hardening.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Other security issues",
+      "obsolete": false
+    },
+    "silver/implement_secure_design": {
+      "description_key": "en.criteria.1.implement_secure_design.description",
+      "details_key": "en.criteria.1.implement_secure_design.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Secure development knowledge",
+      "obsolete": false
+    },
+    "silver/input_validation": {
+      "description_key": "en.criteria.1.input_validation.description",
+      "details_key": "en.criteria.1.input_validation.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Other security issues",
+      "obsolete": false
+    },
+    "silver/installation_common": {
+      "description_key": "en.criteria.1.installation_common.description",
+      "details_key": "en.criteria.1.installation_common.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Installation system",
+      "obsolete": false
+    },
+    "silver/installation_development_quick": {
+      "description_key": "en.criteria.1.installation_development_quick.description",
+      "details_key": "en.criteria.1.installation_development_quick.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Installation system",
+      "obsolete": false
+    },
+    "silver/installation_standard_variables": {
+      "description_key": "en.criteria.1.installation_standard_variables.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Installation system",
+      "obsolete": false
+    },
+    "silver/interfaces_current": {
+      "description_key": "en.criteria.1.interfaces_current.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Externally-maintained components",
+      "obsolete": false
+    },
+    "silver/internationalization": {
+      "description_key": "en.criteria.1.internationalization.description",
+      "details_key": "en.criteria.1.internationalization.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Accessibility and internationalization",
+      "obsolete": false
+    },
+    "silver/maintenance_or_update": {
+      "description_key": "en.criteria.1.maintenance_or_update.description",
+      "details_key": null,
+      "future": false,
+      "major": "Change Control",
+      "minor": "Previous versions",
+      "obsolete": false
+    },
+    "silver/regression_tests_added50": {
+      "description_key": "en.criteria.1.regression_tests_added50.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "silver/report_tracker": {
+      "description_key": "en.criteria.1.report_tracker.description",
+      "details_key": null,
+      "future": false,
+      "major": "Reporting",
+      "minor": "Bug-reporting process",
+      "obsolete": false
+    },
+    "silver/roles_responsibilities": {
+      "description_key": "en.criteria.1.roles_responsibilities.description",
+      "details_key": "en.criteria.1.roles_responsibilities.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Project oversight",
+      "obsolete": false
+    },
+    "silver/signed_releases": {
+      "description_key": "en.criteria.1.signed_releases.description",
+      "details_key": "en.criteria.1.signed_releases.details",
+      "future": false,
+      "major": "Security",
+      "minor": "Secure release",
+      "obsolete": false
+    },
+    "silver/sites_password_security": {
+      "description_key": "en.criteria.1.sites_password_security.description",
+      "details_key": "en.criteria.1.sites_password_security.details",
+      "future": false,
+      "major": "Basics",
+      "minor": "Other",
+      "obsolete": false
+    },
+    "silver/static_analysis_common_vulnerabilities": {
+      "description_key": "en.criteria.1.static_analysis_common_vulnerabilities.description",
+      "details_key": "en.criteria.0.static_analysis_common_vulnerabilities.details",
+      "future": false,
+      "major": "Analysis",
+      "minor": "Static code analysis",
+      "obsolete": false
+    },
+    "silver/test_policy_mandated": {
+      "description_key": "en.criteria.1.test_policy_mandated.description",
+      "details_key": null,
+      "future": false,
+      "major": "Quality",
+      "minor": "New functionality testing",
+      "obsolete": false
+    },
+    "silver/test_statement_coverage80": {
+      "description_key": "en.criteria.1.test_statement_coverage80.description",
+      "details_key": "en.criteria.1.test_statement_coverage80.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Automated test suite",
+      "obsolete": false
+    },
+    "silver/tests_documented_added": {
+      "description_key": "en.criteria.1.tests_documented_added.description",
+      "details_key": "en.criteria.0.tests_documented_added.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "New functionality testing",
+      "obsolete": false
+    },
+    "silver/updateable_reused_components": {
+      "description_key": "en.criteria.1.updateable_reused_components.description",
+      "details_key": "en.criteria.1.updateable_reused_components.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Externally-maintained components",
+      "obsolete": false
+    },
+    "silver/version_tags_signed": {
+      "description_key": "en.criteria.1.version_tags_signed.description",
+      "details_key": null,
+      "future": false,
+      "major": "Security",
+      "minor": "Secure release",
+      "obsolete": false
+    },
+    "silver/vulnerability_report_credit": {
+      "description_key": "en.criteria.1.vulnerability_report_credit.description",
+      "details_key": null,
+      "future": false,
+      "major": "Reporting",
+      "minor": "Vulnerability report process",
+      "obsolete": false
+    },
+    "silver/vulnerability_response_process": {
+      "description_key": "en.criteria.1.vulnerability_response_process.description",
+      "details_key": "en.criteria.1.vulnerability_response_process.details",
+      "future": false,
+      "major": "Reporting",
+      "minor": "Vulnerability report process",
+      "obsolete": false
+    },
+    "silver/warnings_strict": {
+      "description_key": "en.criteria.1.warnings_strict.description",
+      "details_key": "en.criteria.0.warnings_strict.details",
+      "future": false,
+      "major": "Quality",
+      "minor": "Warning flags",
+      "obsolete": false
+    }
+  },
+  "files": {
+    "LICENSE": "d579030dcd292b0925056544b00fe6e6895dcd68c1b8ae1d38014e376ef631d9",
+    "app/helpers/projects_helper.rb": "c224efdde0cac391c7056d6754f37b994d1408f402e26bfbfe6632d3c17f6baf",
+    "app/models/concerns/level_conversion.rb": "6ae4b4946a8c9a85f64d8bfe36ac1a683b5309a3623eb1a57e5862a62940645c",
+    "app/models/criteria.rb": "242cd8fa8f400573a25ad53f770cc9525be88112caedd166152082570d642a85",
+    "config/initializers/00_criteria_hash.rb": "e991408023892c4de8806f4aaece4ea64bd9ec6ffaf7a379d822fdb95a4b8112",
+    "config/locales/en.yml": "2dec2815dafb6444e2213ea224dab22633164f618c6297c3d511bcd6c4a8b5e8",
+    "criteria/baseline_criteria.yml": "e6225fc05b8e58f6aaa5cd6d0f39bd050c6ba9bef8c8a8b40adaf42e2ff37b91",
+    "criteria/criteria.yml": "ca39078ee02032152210f0816add8b096a78d5c6d2f31f90e1de948ec190b1b9"
+  },
+  "flag_policy": "Explicit requirements include upstream entailments: met_url_required implies met_justification_required; na_justification_required implies na_allowed.",
+  "generated_at": "2026-11-09T22:34:03Z",
+  "generated_at_policy": "Source-manifest generation timestamp preserved on regeneration",
+  "generator": {
+    "format_version": 1,
+    "path": "scripts/generate_catalog.py",
+    "sha256": "44f5d0fe2c380075da6628f99c59bb535fdeba6ea195216831841b7bad55d9a1"
+  },
+  "license_file": "BADGEAPP-LICENSE.txt",
+  "repository": "https://github.com/ossf/best-practices-badge",
+  "revision": "868e1677339a3fdb48851b0c2ae8862c553115eb",
+  "text_policy": "English locale descriptions; upstream rank-bounded details inheritance"
+}

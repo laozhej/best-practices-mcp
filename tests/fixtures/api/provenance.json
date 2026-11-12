@@ -1,0 +1,43 @@
+{
+  "source_revision": "868e1677339a3fdb48851b0c2ae8862c553115eb",
+  "source_repository": "https://github.com/ossf/best-practices-badge",
+  "fixture_kind": "synthetic records shaped by pinned upstream public JSON",
+  "source_paths": [
+    "docs/api.md",
+    "app/views/projects/_project.json.jbuilder",
+    "app/controllers/projects_controller.rb",
+    "app/models/project.rb",
+    "config/routes.rb",
+    "app/controllers/application_controller.rb"
+  ],
+  "compatibility_assertions": [
+    "Public project JSON is an object with integer id; index JSON is an array of records.",
+    "Baseline status and justification keys use display aliases.",
+    "Blank justification values are omitted by the pinned JSON builder; absence is retained in progress.",
+    "Project-entry attribution/license and upstream percentage fields are preserved without local inference.",
+    "URL search can match URL spellings more broadly than exact identity comparison; retain all candidates.",
+    "Controller set_valid_query_url reconstructs query parameters using Addressable; transport canonicalizes parameter ordering and encoding while preserving query values."
+  ],
+  "pagination": "Synthetic Link headers exercise optional authoritative metadata. Pinned array bodies alone establish neither totals nor the existence of another nonempty page.",
+  "privacy": "All names, IDs, URLs and answer text are synthetic; no user/project data was fetched.",
+  "canonical_query": {
+    "dependency": "Addressable 2.9.2, pinned by upstream Gemfile.lock",
+    "source": "https://raw.githubusercontent.com/sporkmonger/addressable/addressable-2.9.2/lib/addressable/uri.rb",
+    "method": "Addressable::URI#query_values=",
+    "rule": "Sort parameter names lexically; percent-encode UTF-8 bytes except RFC 3986 unreserved characters. Encode space as %20 and literal plus as %2B. Preserve decoded query values exactly.",
+    "example_parameters": {
+      "q": "white space /雪",
+      "page": 1
+    },
+    "example_path_query": "/projects.json?page=1&q=white%20space%20%2F%E9%9B%AA"
+  },
+  "json_route_canonicalization": {
+    "single_project": "/projects/{id}.json",
+    "discovery": "/projects.json",
+    "api_documentation": "docs/api.md lines 34, 47, 534-538 show unprefixed JSON examples and explain the JSON locale-redirection exemption.",
+    "routes": "config/routes.rb lines 90-97 define the locale-independent single-project JSON route; lines 129-133 permanently redirect localized single-project JSON URLs to it.",
+    "controller": "app/controllers/application_controller.rb lines 399-401 and 587-592 exempt json/csv formats from missing-locale redirects.",
+    "scope": "The /en advice in docs/api.md lines 172-173 belongs to as=badge navigation, not ordinary public JSON reads. HTML edit URLs remain English-prefixed.",
+    "redirect_policy": "Construct canonical fixed paths directly; reject rather than follow any unexpected redirects."
+  }
+}

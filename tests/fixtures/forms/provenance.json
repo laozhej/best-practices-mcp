@@ -1,0 +1,59 @@
+{
+  "upstream_revision": "868e1677339a3fdb48851b0c2ae8862c553115eb",
+  "kind": "synthetic minimal source-derived controls; not captured rendered production pages",
+  "sources": [
+    "app/views/projects/_form_0.html.erb",
+    "app/views/projects/_form_1.html.erb",
+    "app/views/projects/_form_2.html.erb",
+    "app/views/projects/_form_baseline-1.html.erb",
+    "app/views/projects/_form_baseline-2.html.erb",
+    "app/views/projects/_form_baseline-3.html.erb",
+    "app/views/projects/_form_baseline.html.erb",
+    "app/views/projects/_form_basics.html.erb",
+    "app/views/projects/_status_chooser.html.erb",
+    "app/helpers/projects_helper.rb"
+  ],
+  "levels": {
+    "passing": {
+      "criterion_id": "build",
+      "na_allowed": true
+    },
+    "silver": {
+      "criterion_id": "access_continuity",
+      "na_allowed": false
+    },
+    "gold": {
+      "criterion_id": "achieve_silver",
+      "na_allowed": false
+    },
+    "baseline-1": {
+      "criterion_id": "osps_ac_01_01",
+      "na_allowed": true
+    },
+    "baseline-2": {
+      "criterion_id": "osps_ac_04_01",
+      "na_allowed": true
+    },
+    "baseline-3": {
+      "criterion_id": "osps_ac_04_02",
+      "na_allowed": true
+    }
+  },
+  "source_sha256": {
+    "app/views/projects/_form_0.html.erb": "f269405a02175fdaf19d9934c770f29b8f1bc7fa89230300bfd88120a3e33379",
+    "app/views/projects/_form_1.html.erb": "567780dbaecb7b6db1398705576d7ef05da678033c6e4df0461fd9ea8d82020e",
+    "app/views/projects/_form_2.html.erb": "f3ba064c97536e775bb2fce8a5e328b777e6fb79cffb375d3ef67b3f1b234c77",
+    "app/views/projects/_form_baseline-1.html.erb": "6a147532b2e6aba6028822de7ff384e9a03b17f6299da719ab356a0645a1f9d6",
+    "app/views/projects/_form_baseline-2.html.erb": "12a5e4ce9bbdf8ba894cc7f5ca90b4f8a05c1719fb1dab5dafcd86e294ba1cd4",
+    "app/views/projects/_form_baseline-3.html.erb": "1421d29d296294ed12d57d16bd57eb1436568764e329ff15d5baf96998e16bc5",
+    "app/views/projects/_form_baseline.html.erb": "bdba1f7aa427cfbe87d77801a75e64fa47482b3ba6a35512a3c85f1d25dd4590",
+    "app/views/projects/_form_basics.html.erb": "a507649be7517aff9a314d533fcbca1b171b8a5d09ab92b0a183b0d5060d651f",
+    "app/views/projects/_status_chooser.html.erb": "2e9b8d27c90613b6ae5f53eef3de2d0057b35f61355b50c969baf640a619e0d4",
+    "app/helpers/projects_helper.rb": "c224efdde0cac391c7056d6754f37b994d1408f402e26bfbfe6632d3c17f6baf"
+  },
+  "derivation": {
+    "metadata": "All three classic form partials render form_basics; all three baseline wrappers render form_baseline, which renders form_basics. form_basics has name/license/implementation_languages text_field and description text_area. These four are unconditional within the shared partial.",
+    "criteria": "_status_chooser calls status_radio_button with canonical status symbols and Met/Unmet/conditional N/A/? strings; projects_helper status_radio_button passes exact string values to the Rails form builder. _status_chooser emits justification_symbol text_area. Canonical symbols come from the pinned bundled criteria catalog.",
+    "coverage": "Each fixture intentionally includes one representative canonical criterion and all four writable metadata controls. Routes, duplicate/missing/wrong-type controls, inherited disabled state, and direct runtime failures are varied by the test harness. This is DOM conformance against source-derived controls, not a deployed BadgeApp observation."
+  }
+}

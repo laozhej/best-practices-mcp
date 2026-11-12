@@ -1,0 +1,19 @@
+# Coverage is measured by every compatibility job. Codecov reports trends;
+# behavioral tests remain required, without introducing an arbitrary percentage gate.
+coverage:
+  status:
+    project:
+      default:
+        informational: true
+    patch:
+      default:
+        informational: true
+
+comment:
+  layout: "condensed_header, diff, flags"
+  require_changes: true
+
+flags:
+  server:
+    paths: [src/best_practices_mcp/]
+    carryforward: false

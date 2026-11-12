@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$milestone · $title · Best Practices MCP</title>
+<style>
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #17263b; background: #f5f7fa; }
+body { max-width: 1120px; margin: 0 auto; padding: 32px 24px 64px; line-height: 1.55; }
+a { color: #174db0; } header { border-bottom: 3px solid #285bb0; margin-bottom: 28px; }
+h1 { line-height: 1.2; } h2 { margin-top: 36px; } .eyebrow { letter-spacing: .08em; text-transform: uppercase; }
+.gate { padding: 12px 16px; background: #e7edf7; border-left: 4px solid #285bb0; font-weight: 650; }
+.table-wrap { overflow-x: auto; }
+th:nth-child(2), td:nth-child(2) { min-width: 6.5rem; }
+th:nth-child(3), td:nth-child(3) { min-width: 7rem; }
+table { width: 100%; border-collapse: collapse; background: white; font-size: .95rem; overflow-wrap: anywhere; }
+th, td { border: 1px solid #cad3df; padding: 10px 12px; text-align: left; vertical-align: top; }
+th { background: #eaf0f8; } pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #16263c; color: white; padding: 14px 16px; border-radius: 5px; }
+li { margin: 8px 0; } .muted, footer { color: #536177; font-size: .92rem; } summary { cursor: pointer; font-weight: 650; }
+footer { margin-top: 40px; border-top: 1px solid #cad3df; padding-top: 16px; }
+@media print { body { padding: 0; max-width: none; } pre { background: white; color: black; border: 1px solid #999; } h2 { break-after: avoid; } tr { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<header><p class="eyebrow">Best Practices MCP · Owner QA · $milestone</p><h1>$title</h1><p>$summary</p><p class="gate">Technical gate: $gate</p></header>
+<nav>$previous<a href="../../docs/README.md">Documentation</a> · <a href="../../docs/design.md">Design</a> · <a href="../../docs/contracts.md">Contracts</a> · <a href="../../docs/releasing.md">Release procedure</a></nav>
+<h2>Commitments and evidence</h2>$commitments
+<p>$evidence</p>
+<details><summary>Execution details and evidence freshness</summary>$metadata$checks</details>
+<h2>Verify this milestone</h2><p>$prerequisites</p>$steps
+<h2>Decisions and changes</h2>$decisions
+<h2>Open questions</h2>$questions
+<h2>Known limitations and next steps</h2>$limitations<p>$next_steps</p>
+$live_qa
+<h2>Review status</h2>$review
+<footer>This report is a development handoff. Viewing it runs no commands. Test passes and independent review do not imply owner approval or publication authorization. Documentation-only report commits do not invalidate unchanged implementation evidence.</footer>
+</body>
+</html>

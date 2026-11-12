@@ -1,0 +1,44 @@
+name: Coverage upload
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  upload:
+    name: Upload measured server coverage
+    if: >-
+      github.repository == 'reponomics/best-practices-mcp' &&
+      vars.CODECOV_ENABLED == 'true' &&
+      (!github.event.repository.private || github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      # This job only reads source paths and uploads the completed matrix report.
+      # No project installation, test, build, or other project code executes here.
+      - name: Check out source for coverage path mapping
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Download this run's Linux Python 3.11 evidence
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: evidence-ubuntu-24.04-python-3.11
+          path: coverage-artifact
+      - name: Upload coverage without a stored token
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+        with:
+          files: coverage-artifact/coverage/coverage.xml
+          disable_search: true
+          plugins: noop
+          flags: server
+          name: server-python-3.11-linux
+          # Public fork PRs use Codecov's tokenless path; the fork receives no OIDC token.
+          use_oidc: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+          fail_ci_if_error: true

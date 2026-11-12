@@ -1,0 +1,96 @@
+name: Compatibility and coverage
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compatibility:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15, windows-2025]
+        python: ['3.11', '3.12']
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONUTF8: '1'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+      VENV_PYTHON: ${{ matrix.os == 'windows-2025' && 'venv/Scripts/python.exe' || 'venv/bin/python' }}
+      CI_MATRIX_OS: ${{ matrix.os }}
+      CI_MATRIX_PYTHON: ${{ matrix.python }}
+    steps:
+      - name: Preserve byte-exact upstream fixtures
+        run: git config --global core.autocrlf false
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Set up development-only Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install development environment
+        run: |
+          python -m venv venv
+          "$VENV_PYTHON" -m pip install -e '.[dev]'
+          "$VENV_PYTHON" -m pip check
+          npm ci --ignore-scripts
+      - name: Formatting, lint and catalog reproduction
+        if: matrix.os == 'ubuntu-24.04' && matrix.python == '3.11'
+        run: |
+          "$VENV_PYTHON" -m ruff format --check src tests examples scripts
+          "$VENV_PYTHON" -m ruff check src tests examples scripts
+          "$VENV_PYTHON" scripts/generate_catalog.py --check
+      - name: Offline regression with line and branch coverage
+        run: '"$VENV_PYTHON" scripts/check_coverage.py'
+      - name: Fresh wheel and sdist installation outside checkout
+        if: ${{ !cancelled() }}
+        run: '"$VENV_PYTHON" scripts/check_fresh_package.py --allow-downloads --output build/qa/M5/fresh-package.json'
+      - name: Record exact execution environment
+        if: ${{ always() }}
+        run: python scripts/ci_environment.py --output build/qa/M5/environment.json
+      - name: Retain test, coverage and package evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: evidence-${{ matrix.os }}-python-${{ matrix.python }}
+          path: |
+            build/coverage/
+            build/qa/M5/fresh-package.json
+            build/qa/M5/fresh-package.log
+            build/qa/M5/environment.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  coverage-upload:
+    name: Publish measured coverage
+    needs: compatibility
+    if: >-
+      github.repository == 'reponomics/best-practices-mcp' &&
+      vars.CODECOV_ENABLED == 'true' &&
+      (github.event_name != 'pull_request' || !github.event.repository.private ||
+      github.event.pull_request.head.repo.full_name == github.repository)
+    permissions:
+      contents: read
+      id-token: write
+    uses: ./.github/workflows/coverage.yml

@@ -1,0 +1,105 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pypi-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Validate and build the released revision
+    # Both beta and stable releases are intentional; source validation checks
+    # the tag/version/prerelease flag. Enable only after the public-release gate.
+    if: >-
+      github.repository == 'reponomics/best-practices-mcp' &&
+      github.event.repository.private == false &&
+      vars.PYPI_PUBLISH_ENABLED == 'true' &&
+      github.event.release.draft == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Check out the released commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up minimum supported Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+      - name: Set up development-only Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install development tools
+        run: |
+          make setup
+          make setup-dom
+      - name: Validate tag, version, manifest and main ancestry
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_PRERELEASE: ${{ github.event.release.prerelease }}
+        run: venv/bin/python scripts/release_check.py source
+      - name: Run required conformance checks
+        run: |
+          make check catalog-check
+          venv/bin/uv lock --check
+      - name: Build and validate the exact upload candidates
+        run: |
+          venv/bin/python -m build --no-isolation --outdir build/release/dist
+          venv/bin/python -m twine check --strict build/release/dist/*
+          venv/bin/python scripts/release_check.py artifacts --allow-downloads
+      - name: Preserve validated distributions
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: pypi-distributions
+          path: build/release/dist/*
+          if-no-files-found: error
+          retention-days: 7
+      - name: Retain release qualification evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-qualification
+          path: |
+            build/release/evidence.json
+            build/release/evidence.log
+          if-no-files-found: warn
+          retention-days: 30
+
+  publish:
+    name: Publish validated artifacts through Trusted Publishing
+    needs: build
+    if: >-
+      github.repository == 'reponomics/best-practices-mcp' &&
+      github.event.repository.private == false &&
+      vars.PYPI_PUBLISH_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: pypi
+      url: https://pypi.org/project/best-practices-mcp/
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      # No checkout, dependency installation or project build code in this job.
+      - name: Download this run's validated distributions
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: pypi-distributions
+          path: dist
+      - name: Publish with attestations
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+        with:
+          packages-dir: dist/
+          attestations: true
+          print-hash: true

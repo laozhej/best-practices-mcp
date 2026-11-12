@@ -1,0 +1,23 @@
+{
+  "upstream_revision": "868e1677339a3fdb48851b0c2ae8862c553115eb",
+  "source": "app/models/project.rb:contains_url?,justification_good?",
+  "cases": [
+    {"text": null, "usable": false, "url": false},
+    {"text": "", "usable": false, "url": false},
+    {"text": "four", "usable": false, "url": false},
+    {"text": "12345", "usable": true, "url": false},
+    {"text": "     ", "usable": true, "url": false},
+    {"text": "雪雪雪雪雪", "usable": true, "url": false},
+    {"text": "// abcdef https://example.com", "usable": false, "url": false},
+    {"text": " // abcdef https://example.com", "usable": true, "url": true},
+    {"text": "http://a.b", "usable": true, "url": true},
+    {"text": "https://a.b", "usable": true, "url": true},
+    {"text": "HTTPS://a.b", "usable": true, "url": false},
+    {"text": "http://localhost", "usable": true, "url": false},
+    {"text": "http://a. ", "usable": true, "url": false},
+    {"text": "http://a./", "usable": true, "url": true},
+    {"text": "http://a\n.b", "usable": true, "url": true},
+    {"text": "http://a\tb.c", "usable": true, "url": true},
+    {"text": "reference https://example.com/path trailing text", "usable": true, "url": true}
+  ]
+}

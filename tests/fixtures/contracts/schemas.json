@@ -1,0 +1,3523 @@
+{
+  "get_criteria": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "dependentRequired": {
+        "criterion_ids": [
+          "level"
+        ]
+      },
+      "properties": {
+        "level": {
+          "enum": [
+            "passing",
+            "silver",
+            "gold",
+            "baseline-1",
+            "baseline-2",
+            "baseline-3"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "criterion_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Criterion Ids",
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "title": "CriteriaInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "CatalogRef": {
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "title": "Revision",
+              "type": "string"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "generated_at": {
+              "title": "Generated At",
+              "type": "string"
+            },
+            "format_version": {
+              "const": 1,
+              "title": "Format Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "revision",
+            "source_url",
+            "generated_at",
+            "format_version"
+          ],
+          "title": "CatalogRef",
+          "type": "object"
+        },
+        "Criterion": {
+          "additionalProperties": false,
+          "properties": {
+            "criterion_id": {
+              "title": "Criterion Id",
+              "type": "string"
+            },
+            "level": {
+              "enum": [
+                "passing",
+                "silver",
+                "gold",
+                "baseline-1",
+                "baseline-2",
+                "baseline-3"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "description": {
+              "title": "Description",
+              "type": "string"
+            },
+            "details": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Details"
+            },
+            "category": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            },
+            "requirement": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Requirement"
+            },
+            "status_field": {
+              "title": "Status Field",
+              "type": "string"
+            },
+            "justification_field": {
+              "title": "Justification Field",
+              "type": "string"
+            },
+            "aliases": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Aliases",
+              "type": "array"
+            },
+            "na_allowed": {
+              "description": "Whether N/A is permitted, including when implied by required N/A justification.",
+              "title": "Na Allowed",
+              "type": "boolean"
+            },
+            "na_justification_required": {
+              "description": "Whether N/A requires justification; implies na_allowed.",
+              "title": "Na Justification Required",
+              "type": "boolean"
+            },
+            "met_justification_required": {
+              "description": "Whether Met requires justification, including when a URL is required.",
+              "title": "Met Justification Required",
+              "type": "boolean"
+            },
+            "met_url_required": {
+              "description": "Whether Met requires a URL in its justification; implies met_justification_required.",
+              "title": "Met Url Required",
+              "type": "boolean"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            }
+          },
+          "required": [
+            "criterion_id",
+            "level",
+            "description",
+            "details",
+            "category",
+            "requirement",
+            "status_field",
+            "justification_field",
+            "aliases",
+            "na_allowed",
+            "na_justification_required",
+            "met_justification_required",
+            "met_url_required",
+            "source_url"
+          ],
+          "title": "Criterion",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "GetCriteriaResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "level": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "passing",
+                    "silver",
+                    "gold",
+                    "baseline-1",
+                    "baseline-2",
+                    "baseline-3"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Level"
+            },
+            "levels": {
+              "items": {
+                "enum": [
+                  "passing",
+                  "silver",
+                  "gold",
+                  "baseline-1",
+                  "baseline-2",
+                  "baseline-3"
+                ],
+                "type": "string"
+              },
+              "title": "Levels",
+              "type": "array"
+            },
+            "criteria": {
+              "items": {
+                "$ref": "#/$defs/Criterion"
+              },
+              "title": "Criteria",
+              "type": "array"
+            },
+            "catalog": {
+              "$ref": "#/$defs/CatalogRef"
+            }
+          },
+          "required": [
+            "schema_version",
+            "level",
+            "levels",
+            "criteria",
+            "catalog"
+          ],
+          "title": "GetCriteriaResult",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GetCriteriaResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "find_project": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "query": {
+          "title": "Query",
+          "type": "string"
+        },
+        "page": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "title": "Page",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "title": "FindProjectInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "Candidate": {
+          "additionalProperties": false,
+          "properties": {
+            "project": {
+              "$ref": "#/$defs/Project"
+            },
+            "match_basis": {
+              "enum": [
+                "id",
+                "repo_url",
+                "homepage_url",
+                "url_query",
+                "text"
+              ],
+              "title": "Match Basis",
+              "type": "string"
+            }
+          },
+          "required": [
+            "project",
+            "match_basis"
+          ],
+          "title": "Candidate",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "FindProjectResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "query": {
+              "title": "Query",
+              "type": "string"
+            },
+            "query_kind": {
+              "enum": [
+                "id",
+                "url",
+                "text"
+              ],
+              "title": "Query Kind",
+              "type": "string"
+            },
+            "page": {
+              "exclusiveMinimum": 0,
+              "title": "Page",
+              "type": "integer"
+            },
+            "candidates": {
+              "items": {
+                "$ref": "#/$defs/Candidate"
+              },
+              "title": "Candidates",
+              "type": "array"
+            },
+            "next_page": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Next Page"
+            },
+            "pagination_complete": {
+              "title": "Pagination Complete",
+              "type": "boolean"
+            },
+            "observation": {
+              "$ref": "#/$defs/SearchObservation"
+            }
+          },
+          "required": [
+            "schema_version",
+            "query",
+            "query_kind",
+            "page",
+            "candidates",
+            "next_page",
+            "pagination_complete",
+            "observation"
+          ],
+          "title": "FindProjectResult",
+          "type": "object"
+        },
+        "Project": {
+          "additionalProperties": false,
+          "properties": {
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "repo_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Repo Url"
+            },
+            "homepage_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Homepage Url"
+            }
+          },
+          "required": [
+            "project_id",
+            "name",
+            "repo_url",
+            "homepage_url"
+          ],
+          "title": "Project",
+          "type": "object"
+        },
+        "SearchObservation": {
+          "additionalProperties": false,
+          "properties": {
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "fetched_at": {
+              "title": "Fetched At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "source_url",
+            "fetched_at"
+          ],
+          "title": "SearchObservation",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FindProjectResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "get_project_progress": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "dependentRequired": {
+        "criterion_ids": [
+          "level"
+        ]
+      },
+      "properties": {
+        "project_id": {
+          "exclusiveMinimum": 0,
+          "title": "Project Id",
+          "type": "integer"
+        },
+        "level": {
+          "enum": [
+            "passing",
+            "silver",
+            "gold",
+            "baseline-1",
+            "baseline-2",
+            "baseline-3"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "criterion_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Criterion Ids",
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "project_id"
+      ],
+      "title": "ProgressInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "CatalogRef": {
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "title": "Revision",
+              "type": "string"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "generated_at": {
+              "title": "Generated At",
+              "type": "string"
+            },
+            "format_version": {
+              "const": 1,
+              "title": "Format Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "revision",
+            "source_url",
+            "generated_at",
+            "format_version"
+          ],
+          "title": "CatalogRef",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "GetProjectProgressResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "project": {
+              "$ref": "#/$defs/Project"
+            },
+            "level": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "passing",
+                    "silver",
+                    "gold",
+                    "baseline-1",
+                    "baseline-2",
+                    "baseline-3"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Level"
+            },
+            "summaries": {
+              "items": {
+                "$ref": "#/$defs/Summary"
+              },
+              "title": "Summaries",
+              "type": "array"
+            },
+            "answers": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Answers",
+              "type": "object"
+            },
+            "criteria": {
+              "items": {
+                "$ref": "#/$defs/SavedCriterion"
+              },
+              "title": "Criteria",
+              "type": "array"
+            },
+            "observation": {
+              "$ref": "#/$defs/Observation"
+            },
+            "catalog": {
+              "$ref": "#/$defs/CatalogRef"
+            },
+            "summary_metadata": {
+              "$ref": "#/$defs/SummaryMetadata"
+            }
+          },
+          "required": [
+            "schema_version",
+            "project",
+            "level",
+            "summaries",
+            "answers",
+            "criteria",
+            "observation",
+            "catalog",
+            "summary_metadata"
+          ],
+          "title": "GetProjectProgressResult",
+          "type": "object"
+        },
+        "Observation": {
+          "additionalProperties": false,
+          "properties": {
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "fetched_at": {
+              "title": "Fetched At",
+              "type": "string"
+            },
+            "attribution": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Attribution"
+            },
+            "license": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "License"
+            }
+          },
+          "required": [
+            "project_id",
+            "source_url",
+            "fetched_at",
+            "attribution",
+            "license"
+          ],
+          "title": "Observation",
+          "type": "object"
+        },
+        "Project": {
+          "additionalProperties": false,
+          "properties": {
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "repo_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Repo Url"
+            },
+            "homepage_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Homepage Url"
+            }
+          },
+          "required": [
+            "project_id",
+            "name",
+            "repo_url",
+            "homepage_url"
+          ],
+          "title": "Project",
+          "type": "object"
+        },
+        "SavedCriterion": {
+          "additionalProperties": false,
+          "properties": {
+            "criterion_id": {
+              "title": "Criterion Id",
+              "type": "string"
+            },
+            "status_present": {
+              "title": "Status Present",
+              "type": "boolean"
+            },
+            "status": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array"
+                },
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              ]
+            },
+            "justification_present": {
+              "title": "Justification Present",
+              "type": "boolean"
+            },
+            "justification": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array"
+                },
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "required": [
+            "criterion_id",
+            "status_present",
+            "status",
+            "justification_present",
+            "justification"
+          ],
+          "title": "SavedCriterion",
+          "type": "object"
+        },
+        "Summary": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "passing",
+                "silver",
+                "gold",
+                "baseline-1",
+                "baseline-2",
+                "baseline-3"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "upstream_percentage": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Upstream Percentage"
+            }
+          },
+          "required": [
+            "level",
+            "upstream_percentage"
+          ],
+          "title": "Summary",
+          "type": "object"
+        },
+        "SummaryMetadata": {
+          "additionalProperties": false,
+          "properties": {
+            "badge_level": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array"
+                },
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              ]
+            },
+            "tiered_percentage": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array"
+                },
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              ]
+            },
+            "baseline_tiered_percentage": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array"
+                },
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "title": "SummaryMetadata",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GetProjectProgressResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "build_draft": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "draft": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            ]
+          },
+          "title": "Draft",
+          "type": "object"
+        },
+        "changes": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            ]
+          },
+          "title": "Changes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "draft"
+      ],
+      "title": "BuildDraftInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "BuildDraftResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "draft": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Draft",
+              "type": "object"
+            },
+            "issues": {
+              "items": {
+                "$ref": "#/$defs/StructuralIssue"
+              },
+              "title": "Issues",
+              "type": "array"
+            },
+            "serialized_size_bytes": {
+              "minimum": 0,
+              "title": "Serialized Size Bytes",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "schema_version",
+            "draft",
+            "issues",
+            "serialized_size_bytes"
+          ],
+          "title": "BuildDraftResult",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "StructuralIssue": {
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "title": "Field",
+              "type": "string"
+            },
+            "code": {
+              "enum": [
+                "unknown_field",
+                "invalid_type",
+                "invalid_status"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field",
+            "code",
+            "message"
+          ],
+          "title": "StructuralIssue",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BuildDraftResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "read_draft": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "project_id": {
+          "exclusiveMinimum": 0,
+          "title": "Project Id",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "project_id"
+      ],
+      "title": "ProjectInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "Identity": {
+          "additionalProperties": false,
+          "properties": {
+            "association": {
+              "enum": [
+                "storage_key",
+                "document_provenance",
+                "explicit_target"
+              ],
+              "title": "Association",
+              "type": "string"
+            },
+            "id_check": {
+              "enum": [
+                "matched",
+                "absent"
+              ],
+              "title": "Id Check",
+              "type": "string"
+            },
+            "repo_check": {
+              "enum": [
+                "matched",
+                "absent",
+                "not_checked"
+              ],
+              "title": "Repo Check",
+              "type": "string"
+            }
+          },
+          "required": [
+            "association",
+            "id_check",
+            "repo_check"
+          ],
+          "title": "Identity",
+          "type": "object"
+        },
+        "ReadDraftResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "draft": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Draft",
+              "type": "object"
+            },
+            "issues": {
+              "items": {
+                "$ref": "#/$defs/StructuralIssue"
+              },
+              "title": "Issues",
+              "type": "array"
+            },
+            "serialized_size_bytes": {
+              "minimum": 0,
+              "title": "Serialized Size Bytes",
+              "type": "integer"
+            },
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "location": {
+              "title": "Location",
+              "type": "string"
+            },
+            "identity": {
+              "$ref": "#/$defs/Identity"
+            }
+          },
+          "required": [
+            "schema_version",
+            "draft",
+            "issues",
+            "serialized_size_bytes",
+            "project_id",
+            "location",
+            "identity"
+          ],
+          "title": "ReadDraftResult",
+          "type": "object"
+        },
+        "StructuralIssue": {
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "title": "Field",
+              "type": "string"
+            },
+            "code": {
+              "enum": [
+                "unknown_field",
+                "invalid_type",
+                "invalid_status"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field",
+            "code",
+            "message"
+          ],
+          "title": "StructuralIssue",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReadDraftResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "update_draft": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "project_id": {
+          "exclusiveMinimum": 0,
+          "title": "Project Id",
+          "type": "integer"
+        },
+        "changes": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            ]
+          },
+          "title": "Changes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "project_id",
+        "changes"
+      ],
+      "title": "UpdateDraftInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "Identity": {
+          "additionalProperties": false,
+          "properties": {
+            "association": {
+              "enum": [
+                "storage_key",
+                "document_provenance",
+                "explicit_target"
+              ],
+              "title": "Association",
+              "type": "string"
+            },
+            "id_check": {
+              "enum": [
+                "matched",
+                "absent"
+              ],
+              "title": "Id Check",
+              "type": "string"
+            },
+            "repo_check": {
+              "enum": [
+                "matched",
+                "absent",
+                "not_checked"
+              ],
+              "title": "Repo Check",
+              "type": "string"
+            }
+          },
+          "required": [
+            "association",
+            "id_check",
+            "repo_check"
+          ],
+          "title": "Identity",
+          "type": "object"
+        },
+        "StructuralIssue": {
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "title": "Field",
+              "type": "string"
+            },
+            "code": {
+              "enum": [
+                "unknown_field",
+                "invalid_type",
+                "invalid_status"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field",
+            "code",
+            "message"
+          ],
+          "title": "StructuralIssue",
+          "type": "object"
+        },
+        "UpdateDraftResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "applied_patch": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Applied Patch",
+              "type": "object"
+            },
+            "created": {
+              "title": "Created",
+              "type": "boolean"
+            },
+            "location": {
+              "title": "Location",
+              "type": "string"
+            },
+            "issues": {
+              "items": {
+                "$ref": "#/$defs/StructuralIssue"
+              },
+              "title": "Issues",
+              "type": "array"
+            },
+            "serialized_size_bytes": {
+              "minimum": 0,
+              "title": "Serialized Size Bytes",
+              "type": "integer"
+            },
+            "identity": {
+              "$ref": "#/$defs/Identity"
+            }
+          },
+          "required": [
+            "schema_version",
+            "project_id",
+            "applied_patch",
+            "created",
+            "location",
+            "issues",
+            "serialized_size_bytes",
+            "identity"
+          ],
+          "title": "UpdateDraftResult",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UpdateDraftResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "validate_draft": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "project_id": {
+          "exclusiveMinimum": 0,
+          "title": "Project Id",
+          "type": "integer"
+        },
+        "level": {
+          "enum": [
+            "passing",
+            "silver",
+            "gold",
+            "baseline-1",
+            "baseline-2",
+            "baseline-3"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "draft": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            ]
+          },
+          "title": "Draft",
+          "type": "object"
+        }
+      },
+      "required": [
+        "project_id",
+        "level"
+      ],
+      "title": "DraftSourceInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "CatalogRef": {
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "title": "Revision",
+              "type": "string"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "generated_at": {
+              "title": "Generated At",
+              "type": "string"
+            },
+            "format_version": {
+              "const": 1,
+              "title": "Format Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "revision",
+            "source_url",
+            "generated_at",
+            "format_version"
+          ],
+          "title": "CatalogRef",
+          "type": "object"
+        },
+        "DraftSource": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "explicit",
+                "stored"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Location"
+            }
+          },
+          "required": [
+            "kind",
+            "location"
+          ],
+          "title": "DraftSource",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "Finding": {
+          "additionalProperties": false,
+          "properties": {
+            "criterion_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Criterion Id"
+            },
+            "field": {
+              "title": "Field",
+              "type": "string"
+            },
+            "code": {
+              "enum": [
+                "invalid_type",
+                "invalid_status",
+                "unknown_field",
+                "na_not_allowed",
+                "missing_required_justification",
+                "missing_required_url"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "requirement": {
+              "title": "Requirement",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            }
+          },
+          "required": [
+            "criterion_id",
+            "field",
+            "code",
+            "requirement",
+            "message"
+          ],
+          "title": "Finding",
+          "type": "object"
+        },
+        "Identity": {
+          "additionalProperties": false,
+          "properties": {
+            "association": {
+              "enum": [
+                "storage_key",
+                "document_provenance",
+                "explicit_target"
+              ],
+              "title": "Association",
+              "type": "string"
+            },
+            "id_check": {
+              "enum": [
+                "matched",
+                "absent"
+              ],
+              "title": "Id Check",
+              "type": "string"
+            },
+            "repo_check": {
+              "enum": [
+                "matched",
+                "absent",
+                "not_checked"
+              ],
+              "title": "Repo Check",
+              "type": "string"
+            }
+          },
+          "required": [
+            "association",
+            "id_check",
+            "repo_check"
+          ],
+          "title": "Identity",
+          "type": "object"
+        },
+        "Skipped": {
+          "additionalProperties": false,
+          "properties": {
+            "criterion_id": {
+              "title": "Criterion Id",
+              "type": "string"
+            },
+            "reason": {
+              "enum": [
+                "status_absent",
+                "status_unknown",
+                "status_invalid",
+                "other_level"
+              ],
+              "title": "Reason",
+              "type": "string"
+            },
+            "checks": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Checks",
+              "type": "array"
+            }
+          },
+          "required": [
+            "criterion_id",
+            "reason",
+            "checks"
+          ],
+          "title": "Skipped",
+          "type": "object"
+        },
+        "ValidateDraftResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "level": {
+              "enum": [
+                "passing",
+                "silver",
+                "gold",
+                "baseline-1",
+                "baseline-2",
+                "baseline-3"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "draft_source": {
+              "$ref": "#/$defs/DraftSource"
+            },
+            "identity": {
+              "$ref": "#/$defs/Identity"
+            },
+            "catalog": {
+              "$ref": "#/$defs/CatalogRef"
+            },
+            "findings": {
+              "items": {
+                "$ref": "#/$defs/Finding"
+              },
+              "title": "Findings",
+              "type": "array"
+            },
+            "checked_criteria": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Checked Criteria",
+              "type": "array"
+            },
+            "skipped_criteria": {
+              "items": {
+                "$ref": "#/$defs/Skipped"
+              },
+              "title": "Skipped Criteria",
+              "type": "array"
+            }
+          },
+          "required": [
+            "schema_version",
+            "project_id",
+            "level",
+            "draft_source",
+            "identity",
+            "catalog",
+            "findings",
+            "checked_criteria",
+            "skipped_criteria"
+          ],
+          "title": "ValidateDraftResult",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ValidateDraftResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "prepare_update_url": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "project_id": {
+          "exclusiveMinimum": 0,
+          "title": "Project Id",
+          "type": "integer"
+        },
+        "level": {
+          "enum": [
+            "passing",
+            "silver",
+            "gold",
+            "baseline-1",
+            "baseline-2",
+            "baseline-3"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "draft": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            ]
+          },
+          "title": "Draft",
+          "type": "object"
+        },
+        "override_fields": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Override Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "project_id",
+        "level"
+      ],
+      "title": "PrepareURLInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "CatalogRef": {
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "title": "Revision",
+              "type": "string"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "generated_at": {
+              "title": "Generated At",
+              "type": "string"
+            },
+            "format_version": {
+              "const": 1,
+              "title": "Format Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "revision",
+            "source_url",
+            "generated_at",
+            "format_version"
+          ],
+          "title": "CatalogRef",
+          "type": "object"
+        },
+        "DraftSource": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "explicit",
+                "stored"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Location"
+            }
+          },
+          "required": [
+            "kind",
+            "location"
+          ],
+          "title": "DraftSource",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "Identity": {
+          "additionalProperties": false,
+          "properties": {
+            "association": {
+              "enum": [
+                "storage_key",
+                "document_provenance",
+                "explicit_target"
+              ],
+              "title": "Association",
+              "type": "string"
+            },
+            "id_check": {
+              "enum": [
+                "matched",
+                "absent"
+              ],
+              "title": "Id Check",
+              "type": "string"
+            },
+            "repo_check": {
+              "enum": [
+                "matched",
+                "absent",
+                "not_checked"
+              ],
+              "title": "Repo Check",
+              "type": "string"
+            }
+          },
+          "required": [
+            "association",
+            "id_check",
+            "repo_check"
+          ],
+          "title": "Identity",
+          "type": "object"
+        },
+        "Observation": {
+          "additionalProperties": false,
+          "properties": {
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "fetched_at": {
+              "title": "Fetched At",
+              "type": "string"
+            },
+            "attribution": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Attribution"
+            },
+            "license": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "License"
+            }
+          },
+          "required": [
+            "project_id",
+            "source_url",
+            "fetched_at",
+            "attribution",
+            "license"
+          ],
+          "title": "Observation",
+          "type": "object"
+        },
+        "PrepareURLResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "level": {
+              "enum": [
+                "passing",
+                "silver",
+                "gold",
+                "baseline-1",
+                "baseline-2",
+                "baseline-3"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "catalog": {
+              "$ref": "#/$defs/CatalogRef"
+            },
+            "draft_source": {
+              "$ref": "#/$defs/DraftSource"
+            },
+            "observation": {
+              "$ref": "#/$defs/Observation"
+            },
+            "identity": {
+              "$ref": "#/$defs/Identity"
+            },
+            "outcome": {
+              "enum": [
+                "complete",
+                "partial",
+                "no_changes",
+                "no_transferable_changes",
+                "no_supplied_transferable_answers"
+              ],
+              "title": "Outcome",
+              "type": "string"
+            },
+            "no_artifact_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "No Artifact Reason"
+            },
+            "transfer": {
+              "items": {
+                "$ref": "#/$defs/TransferField"
+              },
+              "title": "Transfer",
+              "type": "array"
+            },
+            "requested_overrides": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Requested Overrides",
+              "type": "array"
+            },
+            "effective_overrides": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Effective Overrides",
+              "type": "array"
+            },
+            "artifact": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/URLArtifact"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "schema_version",
+            "project_id",
+            "level",
+            "catalog",
+            "draft_source",
+            "observation",
+            "identity",
+            "outcome",
+            "no_artifact_reason",
+            "transfer",
+            "requested_overrides",
+            "effective_overrides",
+            "artifact"
+          ],
+          "title": "PrepareURLResult",
+          "type": "object"
+        },
+        "TransferField": {
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "title": "Field",
+              "type": "string"
+            },
+            "disposition": {
+              "enum": [
+                "encoded",
+                "unchanged",
+                "outside_level",
+                "unsupported",
+                "invalid",
+                "omitted"
+              ],
+              "title": "Disposition",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "expected_application": {
+              "enum": [
+                "fill",
+                "replace",
+                "retain_existing",
+                "blocked_by_status",
+                "unchanged",
+                "not_applicable",
+                "unknown"
+              ],
+              "title": "Expected Application",
+              "type": "string"
+            },
+            "override": {
+              "title": "Override",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "field",
+            "disposition",
+            "reason",
+            "expected_application",
+            "override"
+          ],
+          "title": "TransferField",
+          "type": "object"
+        },
+        "URLArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "title": "Url",
+              "type": "string"
+            },
+            "encoded_size_bytes": {
+              "minimum": 0,
+              "title": "Encoded Size Bytes",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "url",
+            "encoded_size_bytes"
+          ],
+          "title": "URLArtifact",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PrepareURLResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "prepare_update_script": {
+    "input": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "project_id": {
+          "exclusiveMinimum": 0,
+          "title": "Project Id",
+          "type": "integer"
+        },
+        "level": {
+          "enum": [
+            "passing",
+            "silver",
+            "gold",
+            "baseline-1",
+            "baseline-2",
+            "baseline-3"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "draft": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            ]
+          },
+          "title": "Draft",
+          "type": "object"
+        }
+      },
+      "required": [
+        "project_id",
+        "level"
+      ],
+      "title": "DraftSourceInput",
+      "type": "object"
+    },
+    "output": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "CatalogRef": {
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "title": "Revision",
+              "type": "string"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "generated_at": {
+              "title": "Generated At",
+              "type": "string"
+            },
+            "format_version": {
+              "const": 1,
+              "title": "Format Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "revision",
+            "source_url",
+            "generated_at",
+            "format_version"
+          ],
+          "title": "CatalogRef",
+          "type": "object"
+        },
+        "DraftSource": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "explicit",
+                "stored"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Location"
+            }
+          },
+          "required": [
+            "kind",
+            "location"
+          ],
+          "title": "DraftSource",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "invalid_document",
+                "invalid_field",
+                "invalid_level",
+                "invalid_criterion",
+                "invalid_query",
+                "invalid_override",
+                "draft_not_found",
+                "draft_read_failed",
+                "draft_write_failed",
+                "document_too_large",
+                "response_too_large",
+                "project_not_found",
+                "project_mismatch",
+                "project_identity_unresolved",
+                "upstream_unavailable",
+                "upstream_invalid_response",
+                "rate_limited",
+                "internal_error"
+              ],
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  },
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                ]
+              },
+              "title": "Details",
+              "type": "object"
+            },
+            "recovery": {
+              "title": "Recovery",
+              "type": "string"
+            },
+            "retry_after_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retry After Seconds"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "details",
+            "recovery",
+            "retry_after_seconds"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "ErrorResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "error": {
+              "$ref": "#/$defs/Error"
+            }
+          },
+          "required": [
+            "schema_version",
+            "error"
+          ],
+          "title": "ErrorResult",
+          "type": "object"
+        },
+        "Identity": {
+          "additionalProperties": false,
+          "properties": {
+            "association": {
+              "enum": [
+                "storage_key",
+                "document_provenance",
+                "explicit_target"
+              ],
+              "title": "Association",
+              "type": "string"
+            },
+            "id_check": {
+              "enum": [
+                "matched",
+                "absent"
+              ],
+              "title": "Id Check",
+              "type": "string"
+            },
+            "repo_check": {
+              "enum": [
+                "matched",
+                "absent",
+                "not_checked"
+              ],
+              "title": "Repo Check",
+              "type": "string"
+            }
+          },
+          "required": [
+            "association",
+            "id_check",
+            "repo_check"
+          ],
+          "title": "Identity",
+          "type": "object"
+        },
+        "Observation": {
+          "additionalProperties": false,
+          "properties": {
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "fetched_at": {
+              "title": "Fetched At",
+              "type": "string"
+            },
+            "attribution": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Attribution"
+            },
+            "license": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "License"
+            }
+          },
+          "required": [
+            "project_id",
+            "source_url",
+            "fetched_at",
+            "attribution",
+            "license"
+          ],
+          "title": "Observation",
+          "type": "object"
+        },
+        "PrepareScriptResult": {
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "project_id": {
+              "exclusiveMinimum": 0,
+              "title": "Project Id",
+              "type": "integer"
+            },
+            "level": {
+              "enum": [
+                "passing",
+                "silver",
+                "gold",
+                "baseline-1",
+                "baseline-2",
+                "baseline-3"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "catalog": {
+              "$ref": "#/$defs/CatalogRef"
+            },
+            "draft_source": {
+              "$ref": "#/$defs/DraftSource"
+            },
+            "observation": {
+              "$ref": "#/$defs/Observation"
+            },
+            "identity": {
+              "$ref": "#/$defs/Identity"
+            },
+            "outcome": {
+              "enum": [
+                "complete",
+                "partial",
+                "no_changes",
+                "no_transferable_changes",
+                "no_supplied_transferable_answers"
+              ],
+              "title": "Outcome",
+              "type": "string"
+            },
+            "no_artifact_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "No Artifact Reason"
+            },
+            "transfer": {
+              "items": {
+                "$ref": "#/$defs/TransferField"
+              },
+              "title": "Transfer",
+              "type": "array"
+            },
+            "artifact": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ScriptArtifact"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "schema_version",
+            "project_id",
+            "level",
+            "catalog",
+            "draft_source",
+            "observation",
+            "identity",
+            "outcome",
+            "no_artifact_reason",
+            "transfer",
+            "artifact"
+          ],
+          "title": "PrepareScriptResult",
+          "type": "object"
+        },
+        "ScriptArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "javascript": {
+              "title": "Javascript",
+              "type": "string"
+            },
+            "suggested_filename": {
+              "title": "Suggested Filename",
+              "type": "string"
+            },
+            "instructions": {
+              "title": "Instructions",
+              "type": "string"
+            },
+            "encoded_size_bytes": {
+              "minimum": 0,
+              "title": "Encoded Size Bytes",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "javascript",
+            "suggested_filename",
+            "instructions",
+            "encoded_size_bytes"
+          ],
+          "title": "ScriptArtifact",
+          "type": "object"
+        },
+        "TransferField": {
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "title": "Field",
+              "type": "string"
+            },
+            "disposition": {
+              "enum": [
+                "encoded",
+                "unchanged",
+                "outside_level",
+                "unsupported",
+                "invalid",
+                "omitted"
+              ],
+              "title": "Disposition",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "expected_application": {
+              "enum": [
+                "fill",
+                "replace",
+                "retain_existing",
+                "blocked_by_status",
+                "unchanged",
+                "not_applicable",
+                "unknown"
+              ],
+              "title": "Expected Application",
+              "type": "string"
+            },
+            "override": {
+              "title": "Override",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "field",
+            "disposition",
+            "reason",
+            "expected_application",
+            "override"
+          ],
+          "title": "TransferField",
+          "type": "object"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PrepareScriptResult"
+        },
+        {
+          "$ref": "#/$defs/ErrorResult"
+        }
+      ],
+      "type": "object"
+    }
+  }
+}

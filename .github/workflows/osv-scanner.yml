@@ -1,0 +1,70 @@
+name: OSV dependency scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '7 10 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: osv-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  scan:
+    name: Scan resolved Python and npm dependencies
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up the pinned lock tool
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version-file: .tool-versions
+          enable-cache: false
+      - name: Verify the resolved Python lock is current
+        run: uv lock --check
+      - name: Scan the committed dependency versions
+        # No package installation or implicit dependency resolution in this scan.
+        # A scanner error remains a job failure; it is not treated as an empty result.
+        uses: google/osv-scanner-action/osv-scanner-action@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
+        with:
+          scan-args: |-
+            --lockfile=uv.lock
+            --lockfile=package-lock.json
+            --no-resolve
+            --format=sarif
+            --output-file=osv-scanner.sarif
+      - name: Retain the scan and resolved inputs
+        if: ${{ !cancelled() && hashFiles('osv-scanner.sarif') != '' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: osv-dependency-report
+          path: |
+            osv-scanner.sarif
+            uv.lock
+            package-lock.json
+          retention-days: 14
+      - name: Upload SARIF where code scanning is available
+        if: >-
+          !cancelled() && hashFiles('osv-scanner.sarif') != '' &&
+          github.repository == 'reponomics/best-practices-mcp' &&
+          (!github.event.repository.private || vars.PRIVATE_CODE_SCANNING_ENABLED == 'true') &&
+          (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          sarif_file: osv-scanner.sarif
+          category: resolved-python-and-npm-dependencies

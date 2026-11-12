@@ -1,0 +1,22 @@
+{
+  "id": 123,
+  "name": "Example Project",
+  "repo_url": "https://codeberg.org/example/project",
+  "homepage_url": "https://example.org/project",
+  "description_good_status": "Met",
+  "description_good_justification": "https://example.org/project explains the project.",
+  "contribution_status": "?",
+  "OSPS-AC-01.01_status": "Met",
+  "OSPS-AC-01.01_justification": "Contributors use documented authentication controls.",
+  "badge_percentage_0": 42,
+  "badge_percentage_1": 10.5,
+  "badge_percentage_2": 0,
+  "badge_percentage_baseline_1": 75,
+  "badge_percentage_baseline_2": 25,
+  "badge_percentage_baseline_3": 5,
+  "badge_level": "in_progress",
+  "tiered_percentage": 42,
+  "baseline_tiered_percentage": 75,
+  "project_entry_attribution": "Synthetic fixture; credit OpenSSF Best Practices badge contributors for the API design.",
+  "project_entry_license": "CC-BY-3.0+"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 123,
+    "name": "Example Project",
+    "repo_url": "https://codeberg.org/example/project",
+    "homepage_url": "https://example.org/project"
+  },
+  {
+    "id": 456,
+    "name": "Example Project Community",
+    "repo_url": "https://codeberg.org/example/project/",
+    "homepage_url": "https://example.org/community"
+  }
+]
